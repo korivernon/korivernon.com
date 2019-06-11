@@ -1,10 +1,11 @@
-#wrapper {
-  width: 1024px;
-  margin: 0px auto;
-  min-width: 750px;
-}
+
 p {
-  line-height: 30pt;
+  max-width: 65vw;
+  text-align:left;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:24pt;
   width: 1024px;
 }
 body {
@@ -33,17 +34,16 @@ ul {
 }
 
 .banner span {
-  margin: 0 auto 0 auto;
   font-family: Courier;
-  font-size: 40px;
+  font-size: 50px;
+  margin: 0 auto 0 auto;
 }
 .banner p {
   text-align: center;
   font-family: Courier;
-  font-size: 40px;
+  font-size: 50px;
+  line-height: 40pt;
 
-  border-bottom: solid 1px #333;
-  line-height: 35pt;
 }
 h1 {
   border-bottom: solid 1px #333;
@@ -55,7 +55,7 @@ ol {
   border-bottom: solid 1px #333;
 }
 
-#bottom {
+#bottom p{
   text-align: center;
 }
 .blocktext{
@@ -100,8 +100,8 @@ a:link {
 }
 
 a:visited {
-  text-decoration: none;
+  text-decoration: blue;
 }
 a:active {
-  text-decoration: none;
+  text-decoration: blue;
 }
