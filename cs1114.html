@@ -91,6 +91,40 @@
                   href="https://www.python.org/ftp/python/3.7.4/python-3.7.4-amd64.exe">Python 3.7.4 Download for Windows</a>
                  </p>
 
+                 <h2 class="subheading">Lab 11</h2>
+                  <p style="max-width: 65vw; text-align:left; display:block; margin-left:auto; margin-right:auto; line-height:24pt;">
+                   In this lab session we went over how to open and manipulate files using Python. This is an incredibly important skill to master,
+                   seeing as it is an integral part of understanding how to manipulate and adapt outside data to use inside of python. <br><br>
+
+                   In order to bring in files, outside .txt or .csv files, you can use the following: <br>
+                   '''<br>
+
+                   file = open([filename],"[w,r,w+]") <br>
+                   '''<br>
+
+                   <em>UNDERSTAND THAT THERE ARE OTHER(better honestly WAYS TO BRING IN FILES, HOWEVER, IN CS-1114, this is what is expected of you ;). </em>
+
+                   <br><br>
+
+                   It is also important to note that in .csv files, the data is separated by commas. In addition to this, the first line generally
+                   contains the headings, so you have to "skip" this line when bringing in data. <br>
+
+                   One way to "skip" this line is to use: <br> ''' <br> [filename].readline() <br>''' <br><br>
+
+                   In order to bring in the data, you can use a for loop that iterates through every line and brings in the data separated by commas: <br>
+                   ''' <br>
+
+                   data_lst = [] <br>
+                   for i in [filename]: <br>
+                   ....data_lst.append([filename].split(",")) <br>
+                   '''<br>
+                   <br>
+
+
+                   This is kind of difficult to understand, but with time it will get easier to comprehend. <em>Understanding this concept is crucial to
+                   applying this to other applications and functions</em>. Take a look at my project that uses similar concepts but with different libraries... (if I forget to link it, bite me).
+
+
               </div>
 
               <div class="blocktext">
