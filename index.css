@@ -1,3 +1,10 @@
+.code pre{
+  font-family: "Courier New",Courier, "Lucida Sans Typewriter","Lucida Typewriter", monospace;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+}
 
 p {
   max-width: 65vw;

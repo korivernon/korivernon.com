@@ -91,16 +91,43 @@
                   href="https://www.python.org/ftp/python/3.7.4/python-3.7.4-amd64.exe">Python 3.7.4 Download for Windows</a>
                  </p>
 
+                 <h2 class="subheading">Lab 10</h2>
+                  <p style="max-width: 65vw; text-align:left; display:block; margin-left:auto; margin-right:auto; line-height:24pt;">
+                   In lab 10, we discussed lists. Lists are incredibly useful when we want to store and use data repeatedly. Lists are pretty cool
+                   because they allow us to store different data types inside of each "bucket." These buckets that are used to store data can be
+                   accessed by their indexes, and this is incredibly useful in storing data - this is kind of redundant but if you want to learn
+                   more about why lists are so cool, check out this link <a href="https://www.w3schools.com/python/python_lists.asp">hea</a>. <br><br>
+
+                   Lists in python can be defined as <b>Lists, Tuples, Sets, </b>or <b> Dictionaries.</b> <em>However, the only data structures we will
+                   be focusing on in this class well be Lists, Tuples, and Dictionaries, they are all useful tools in data storage! learn more
+                   <a href="https://www.w3schools.com/python/python_lists.asp">hea</a> </em>. <br><br>
+
+                   There are two ways we can traditionally traverse a list. One way is to use the syntax:
+
+<pre class="code">
+lst = ['one','two','three']
+for i in range(len(lst)):
+    print(lst[i]) # print list at i</pre>
+<b>OR</b>
+<pre class="code">
+for item in lst:
+    print(item) # print the items in the list</pre>
+
+                Tuples, alternatively are immutable lists that we can add data to by creating 'new' tuple'
+                and replacing them with the 'old' ones. This is particularly beneficial because of how
+                efficient is is to use tuples (but you don't really care about that because you're not in
+                Data Structures).
+                  </p>
+
                  <h2 class="subheading">Lab 11</h2>
                   <p style="max-width: 65vw; text-align:left; display:block; margin-left:auto; margin-right:auto; line-height:24pt;">
                    In this lab session we went over how to open and manipulate files using Python. This is an incredibly important skill to master,
                    seeing as it is an integral part of understanding how to manipulate and adapt outside data to use inside of python. <br><br>
 
                    In order to bring in files, outside .txt or .csv files, you can use the following: <br>
-                   '''<br>
 
-                   file = open([filename],"[w,r,w+]") <br>
-                   '''<br>
+<pre class="code">    file = open([filename],"[w,r,w+]") <br></pre>
+
 
                    <em>UNDERSTAND THAT THERE ARE OTHER(better honestly WAYS TO BRING IN FILES, HOWEVER, IN CS-1114, this is what is expected of you ;). </em>
 
@@ -109,21 +136,16 @@
                    It is also important to note that in .csv files, the data is separated by commas. In addition to this, the first line generally
                    contains the headings, so you have to "skip" this line when bringing in data. <br>
 
-                   One way to "skip" this line is to use: <br> ''' <br> [filename].readline() <br>''' <br><br>
+                   One way to "skip" this line is to use: <br> <pre class="code">    [filename].readline()</pre>
 
                    In order to bring in the data, you can use a for loop that iterates through every line and brings in the data separated by commas: <br>
-                   ''' <br>
-
-                   data_lst = [] <br>
-                   for i in [filename]: <br>
-                   ....data_lst.append([filename].split(",")) <br>
-                   '''<br>
-                   <br>
-
-
+<pre class="code">
+data_lst = []
+for i in [filename]:
+    data_lst.append([filename].split(","))</pre>
                    This is kind of difficult to understand, but with time it will get easier to comprehend. <em>Understanding this concept is crucial to
                    applying this to other applications and functions</em>. Take a look at my project that uses similar concepts but with different libraries... (if I forget to link it, bite me).
-
+                 </p>
 
               </div>
 
