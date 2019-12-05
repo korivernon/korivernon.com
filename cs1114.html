@@ -152,9 +152,52 @@ for i in [filename]:
               <div class="blocktext">
                 <h1 class="heading">Homework Session Review</h1>
 
-                  <h2 class="subheading">Homework Review Session 1 - <em>September 11, 2019</em></h2>
+                  <h2 class="subheading">Homework Review Session Important Comments</h2>
                    <p style="max-width: 65vw; text-align:left; display:block; margin-left:auto; margin-right:auto; line-height:24pt;">
-                    In this homework session we...
+                    Dictionaries are kind-of a difficult concept to wrap your head around, however, once you master them (and you will),
+                    they are incredibly useful. One of the coolest uses of dictionaries is that we can store data related to a specific
+                    target, we call our <b>key</b>, which in turn gives us our data, we call our <b>value</b>. <br><br>
+
+                    So first let us go over how to instantiate a dictionary. First we need to set our dictionary up. We do that by:
+<pre class="code">new_dictionary = {}</pre>
+                    After we instantiate our dictionary we now have to add to our dictionary.
+<pre class="code">new_dictionary['1'] = 'one'</pre>
+                    When we access out new_dictionary, we will get the value one.
+<pre class="code">
+var = input("Enter an integer: ")
+print(new_dictionary[var])</pre>
+                    Now let's try something a little more challenging. Let's say we want to continously add to a list inside of a dictionary.
+                    What you will find is that inside of a dictionary, we can't use variables in order to add to lists, using the .append(x)
+                    how we have done in the past. Instead we are going to have to... <em>get creative</em>. <br><br>
+
+                    What are the ways that we know that we can use to add to a list? We can use list.append(x)... but we can also use
+                    list += [x] in order to append to the end of a list. These two will have the same result! Let's give that a try!
+
+<pre class="code">
+list_of_names = ['kori','kara','kurt','koal','kia']
+list_of_states = ['nc','sc','ny','mo','al','ca','fl']
+
+visited_states_dict = {} # declare your list
+
+for i in range(len(list_of_names)):
+    for j in range(len(list_of_states)):
+        if i%j == 2 or i%j == 0:
+            if len((visited_states_dict[list_of_names[i]])) /
+             > 0:
+                # if the length is greater than 0
+                visited_states_dict[list_of_names[i]] += /
+                [list_of_states[j]]
+                # add the list_of_states[j] contained
+                # in a list to i
+            else:
+                visited_states_dict[list_of_names[i]] = /
+                 [list_of_states[j]]
+                # start off the list
+            visited_states_dict[list_of_names[i]] = /
+            [list_of_states[j]]</pre>
+
+                  This is an incredibly hard concept to grasp, but study the code and try and the the hang of it. It helps tremendously
+                  and understanding how this works will help you be successful in Data Structures!
                   </p>
 
                 </div>
