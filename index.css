@@ -60,7 +60,17 @@ ul {
 
 .banner span {
   font-family: Courier;
-  font-size: 50px;
+  font-size: 40px;
+  margin: 0 auto 0 auto;
+}
+.cheggbanner span {
+  font-family: Courier;
+  font-size: 20px;
+  margin: 0 auto 0 auto;
+}
+.cheggyp span {
+  font-family: Courier;
+  font-size: 20px;
   margin: 0 auto 0 auto;
 }
 .banner p {
