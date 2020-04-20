@@ -1,0 +1,42 @@
+@media(max-width: 900px){
+    .navbar .nav-item{
+        display: block;
+        width: 100%;
+        padding: 10px 0px;
+    }
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+.heading-line {
+    height: 3px;
+    width: 10%;
+    background: rgb(97, 97, 97);
+}
+.banner {
+    font-family: Courier;
+    font-size: 50px;
+    margin: 0 auto 0 auto;
+  }
+
+.navbar{
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+.navbar-brand,.nav-link{
+    color: #011627;  
+}
+.nav-link:hover,.navbar-brand:hover{
+    color: #777;
+}
+
+footer {
+    border-top: 1px solid #eee;
+}
+.small-me {
+    font-size: 2em;
+}
