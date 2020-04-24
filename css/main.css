@@ -22,6 +22,9 @@ html,body{
     font-size: 50px;
     margin: 0 auto 0 auto;
   }
+.tips, .homework{
+    background: #FF69B4	 ;
+}
 
 .navbar{
     background: #fff;
