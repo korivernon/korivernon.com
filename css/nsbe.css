@@ -28,7 +28,7 @@ html,body{
     background: #000000	 ;
     color: #FFD700;
 }
-.navbar-toggler-icon {
+.navbar-toggler-icon .gold {
     color: #FFD700;
 }
 .navbar{
