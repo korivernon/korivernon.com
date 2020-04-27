@@ -34,8 +34,7 @@ html,body{
     border-bottom: 1px solid 	#FFD700;
     color: #FFD700;
 }
-.navbar-brand,.nav-link{
-    color: #011627;  
+.navbar-brand,.nav-link{  
     color: #FFD700;
 }
 .nav-link:hover,.navbar-brand:hover{
