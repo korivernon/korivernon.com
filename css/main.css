@@ -5,6 +5,9 @@
         padding: 10px 0px;
     }
 }
+p {
+   font-size: 18px;
+}
 html,body{
     width: 100%;
     height: 100%;
@@ -22,7 +25,7 @@ html,body{
     font-size: 50px;
     margin: 0 auto 0 auto;
   }
-.tips, .homework{
+.tips, .lab-review, .homework{
     background: #FF69B4	 ;
 }
 
@@ -31,7 +34,7 @@ html,body{
     border-bottom: 1px solid #eee;
 }
 .navbar-brand,.nav-link{
-    color: #011627;  
+    color: #011627;
 }
 .nav-link:hover,.navbar-brand:hover{
     color: #777;
