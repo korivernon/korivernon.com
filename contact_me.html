@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>NCCU Academic Success Links</title>
+    <title>Kori S. Vernon</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,6 +16,50 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <style>
+      @media(max-width: 900px){
+    .navbar .nav-item{
+        display: block;
+        width: 100%;
+        padding: 10px 0px;
+    }
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+.heading-line {
+    height: 3px;
+    width: 10%;
+    background: rgb(97, 97, 97);
+}
+.banner {
+    font-family: Courier;
+    font-size: 50px;
+    margin: 0 auto 0 auto;
+  }
+
+.navbar{
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+.navbar-brand,.nav-link{
+    color: #011627;  
+}
+.nav-link:hover,.navbar-brand:hover{
+    color: #777;
+}
+
+footer {
+    border-top: 1px solid #eee;
+}
+.small-me {
+    font-size: 2em;
+}
+    </style>
 
 </head>
   <body>
@@ -51,39 +94,64 @@
             </div>
         </div>
     </nav>
-    
-    <section class="home">
-        <div class ="container w-50 py-3">
-            <!-- Add Type at the Top -->
-            <!-- Logo -->
-            <img class ="text-center" src="" alt="">
-            <!-- Personal Picture -->
-            
+
+    <!-- Logo Section -->
+    <section class="logo">
+        <div class="text-center py-3">
+            <a href="index.html">
+                <div class="text-center">
+                    <img src="images/new.png">
+                </div>
+            </a>
+        </div>
+    </section>
+    <!-- Contact Us -->
+    <section class="contact">
+        <div class="container animated slideInLeft delay-1s overflow-hidden">
             <div class="text-center">
-                <a href="index.html"><img src="images/new.png"></a>
+                <h2 class="py-3">Contact Me!</h2>
+                <div class="mx-auto heading-line"></div>
+                <p class="py-3">Feel free to add my <em>.vcf</em> contact card (iOS devices only) using this link <a href="documents/Kori_Selwyn_Vernon.vcf" download>here</a>, email me <a href="mailto:kori.s.vernon@gmail.com">kori.s.vernon@gmail.com</a> or fill out this form!</p>
+                
+                <a href="documents/Kori_Selwyn_Vernon.vcf" download><button class="btn btn-lg btn-primary">Add .vcf Contact Card</button></a>
+                <br><br>
+                <div class="mx-auto heading-line"></div>
+                <h2 class="py-3">Contact Form</h2>
             </div>
-            <nav class="animated fadeIn delay-1s nav small-me justify-content-center">
-                <a class="nav-link" href="https://github.com/korivernon"><i class="fa fa-github"></i></a>
-                <a class="nav-link" href="https://linkedin.com/in/korivernon"><i class="fa fa-linkedin"></i></a>
-            </nav>
+                
+                <form class="col-md-8 mx-auto pb-3" name="submit-to-google-sheet">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input name="name" class="form-control" type="text" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" class="form-control"  type="email" aria-describedby="emailHint" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" name="message" placeholder="Enter Message" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary">Send</button>
+                    <small class="text-muted">Please, Send Only Once (your data page will not refresh after your data has been collected)</small>
+                  </form>
+                  
+                  <script>
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbwPorCGm4fx5nCen62VcxGlkpGChDZd1vN5gH4CRpAAsSOlBnS5/exec'
+                    const form = document.forms['submit-to-google-sheet']
+                  
+                    form.addEventListener('submit', e => {
+                      e.preventDefault()
+                      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                        .then(response => console.log('Success!', response))
+                        .catch(error => console.error('Error!', error.message))
+                    })     
+                  </script>
+            </div>
+    
     </section>
-            
-    <section class="container w-50 pb-3">              
-      <h4 class="text-center">Quick Links</h4><br>
-           <div>
-                &#8627;<a target="_blank"  href="https://forms.gle/Xmp1Go2oYjekf8fa8"><b>Student Form</b></a><br>
-                &#8627;<a target="_blank"  href="https://forms.gle/o4XA6F9V4fTDpPdm9"><b>Faculty Form</b></a><br>
-                &#8627;<a target="_blank" href="https://forms.gle/PUuvqa6j1P6hyQNF9"><b>Billable Hours</b></a> - For completion at the end of every workday<br>
-        
-           </div>
-           <div class="py-3">
-            <h4 class="text-center">Insights (Locked)</h4><br>
-            &#8627;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1O08Vq9hVLWGM_yL3xUsuqxwmil5oUQKnpGiaTEcV74g/edit#gid=83368899"><b>Faculty</b></a><br>
-            &#8627;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1Kmek69mvfbYUBbL4Fn4Tq730XXJ2KXxdZOfHkT9Exdc/edit#gid=730372190"><b>Students</b></a><br>
-            &#8627;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1lh8X6zY9HbTyoJ4dCLsaR6UkUTRPd5X9_zuxcJ8m8Qc/edit#gid=591613882"><b>Billable Hours</b></a><br>
-            
-          </div>
-    </section>
+
+    <!-- Footer -->
     <div id="bottom">
         
         <footer>
@@ -119,16 +187,12 @@
         </div>
           <div class="copyright-info text-center">
             <small class="text-muted"><a class="nav-link" target="_blank" href="https://github.com/korivernon/korivernon.com">Website Source Code</a></small>
-            <p>&copy; 2020 Kori Vernon</p>
+            <p>&copy; 2021 Kori Vernon</p>
           </div>
         </footer>
       </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src=" https://cdn.jsdelivr.net/npm/typed.js@2"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <!-- Cursor Blinking BootStrap/element/interactive element thingything -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
