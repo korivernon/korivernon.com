@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//iPhone OS 17.0.1//EN
+N:Paulino;Lisette;;;
+FN:Lisette Paulino
+ORG:MILSOLUTIONS;
+EMAIL;type=INTERNET;type=WORK;type=pref:liz@milsolutions.us
+TEL;type=pref:(201) 686-6159
+X-SOCIALPROFILE;type=WhatsApp;x-user=+1 (201) 686-6159:x-apple:+1%20(201)%20686-6159
+END:VCARD
