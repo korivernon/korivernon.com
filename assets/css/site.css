@@ -199,7 +199,7 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); padding: 40px 0 48
 .cmd-panel { width: min(600px, 100%); background: #0e1216; color: #e8edf2; border: 1px solid #2e3742; border-radius: 12px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
 .cmd-input-row { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #222a33; }
 .cmd-input-row .prompt { color: #2fd3e6; font-size: 14px; }
-.cmd-input-row input { flex: 1; min-width: 0; background: none; border: 0; color: inherit; font-size: 15px; outline: none; }
+.cmd-input-row input { flex: 1; min-width: 0; background: none; border: 0; color: inherit; font-size: 16px; outline: none; }
 .cmd-out { max-height: 50vh; overflow: auto; padding: 8px 0; font-size: 13px; }
 .cmd-out .row { display: flex; gap: 12px; padding: 7px 16px; cursor: pointer; }
 .cmd-out .row[aria-selected="true"], .cmd-out .row:hover { background: #181d23; }
