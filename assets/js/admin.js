@@ -119,6 +119,7 @@
       { row: [{ k: 'title', label: 'Title', req: true }, { k: 'org', label: 'Company / org', req: true }] },
       { k: 'kind', label: 'Subsection', type: 'select', opts: [['professional', 'Professional Experience'], ['entrepreneurial', 'Entrepreneurial Ventures'], ['volunteer', 'Volunteering & Mentorship (own section)']] },
       { row: [{ k: 'team', label: 'Team / desk' }, { k: 'orgUrl', label: 'Company URL' }] },
+      { k: 'logo', label: 'Company logo', type: 'file', dir: 'images', accept: 'image/*', hint: 'optional small square logo next to the title' },
       { row: [{ k: 'start', label: 'Start', type: 'month' }, { k: 'end', label: 'End', type: 'month', hint: 'blank = present (leave both blank to hide dates)' }] },
       { k: 'bullets', label: 'Bullets', type: 'lines', rows: 6, hint: 'one per line' },
       { k: 'hidden', label: 'Hidden from the site', type: 'check' },

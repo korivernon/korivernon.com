@@ -49,10 +49,11 @@
       "id": "pomtrader",
       "symbol": "POMT",
       "name": "PomTrader",
-      "summary": "Personal trading platform: every brokerage account in one place, with execution algos, hedging and AI research.",
+      "summary": "Personal trading platform: every brokerage account in one place, with systematic strategies, execution algos, hedging and AI research.",
       "description": "Aggregates E*TRADE, Robinhood, Gemini and other accounts (via SnapTrade and direct APIs) into one Flask + Postgres dashboard. Runs a live systematic SOXL/SOXS strategy on MACD + RSI signals with more strategies in paper, TWAP and fractional-TWAP execution algos, a hedging engine that sizes ETF, option and beta hedges to exposure, an AI portfolio manager built from LLM agents, a congressional-trade copier and a News & Insights research tab with deterministic 5-pillar scoring.",
       "category": "Trading",
       "stack": [
+        "Systematic strategies",
         "Python",
         "Flask",
         "Postgres",
@@ -1517,7 +1518,8 @@
       "hidden": false,
       "bullets": [
         "Paired one-on-one with a New York City high school student, supporting them through high school, the college process and the path to graduation."
-      ]
+      ],
+      "logo": "images/orgs-imentor.svg"
     },
     {
       "id": "america-needs-you",
@@ -1531,6 +1533,22 @@
       "hidden": false,
       "bullets": [
         "Mentor first-generation college students on career preparation, internships and professional development, helping them build the networks and skills for economic mobility."
+      ],
+      "logo": "images/orgs-any.png"
+    },
+    {
+      "id": "any-associate-board",
+      "kind": "volunteer",
+      "org": "America Needs You",
+      "orgUrl": "https://americaneedsyou.org",
+      "logo": "images/orgs-any.png",
+      "title": "Associate Board Member, New Jersey",
+      "team": "",
+      "start": "2024",
+      "end": "2024",
+      "hidden": false,
+      "bullets": [
+        "Served on America Needs You's New Jersey Associate Board, helping grow support for the organization's work with first-generation college students."
       ]
     }
   ],
@@ -1645,7 +1663,7 @@
       "url": "cs1114.html"
     }
   ],
-  "educationImage": "",
+  "educationImage": "images/kori_vernon_personality_pic.png",
   "experienceGroups": {
     "professional": "Professional Experience",
     "entrepreneurial": "Entrepreneurial Ventures",

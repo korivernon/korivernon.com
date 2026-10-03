@@ -202,7 +202,8 @@
   function jobs(exp) {
     return exp.map(e =>
       '<article class="job" data-edit="experience/' + esc(e.id) + '">' + pen('experience/' + e.id) +
-        '<h3>' + esc(e.title) + ' @ ' + (e.orgUrl ? link(e.orgUrl, e.org) : esc(e.org)) + '</h3>' +
+        '<h3>' + (e.logo ? '<img class="org-logo" src="' + esc(safeUrl(e.logo)) + '" alt="" width="28" height="28">' : '') +
+          esc(e.title) + ' @ ' + (e.orgUrl ? link(e.orgUrl, e.org) : esc(e.org)) + '</h3>' +
         ((e.start || e.team) ? '<p class="when">' + [e.start ? K.fmtRange(e.start, e.end) : '', e.team || ''].filter(Boolean).map(esc).join(' · ') + '</p>' : '') +
         ((e.bullets || []).length ? '<ul>' + e.bullets.map(b => '<li>' + inline(b) + '</li>').join('') + '</ul>' : '') +
       '</article>').join('');

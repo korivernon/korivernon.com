@@ -60,6 +60,7 @@
   function nowYm() { const d = new Date(); return d.getFullYear() * 12 + d.getMonth(); }
   const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   function fmtYm(s) {
+    if (/^\d{4}$/.test(String(s || ''))) return String(s);  // year-only dates
     const v = ym(s);
     if (v == null) return 'Present';
     return MONTHS[v % 12] + ' ' + Math.floor(v / 12);
