@@ -44,6 +44,7 @@
       footerHtml(d);
 
     if (showProjects) wireProjects();
+    if (p.logo && /\.svg$/i.test(p.logo)) inlineSvg($('#logo'), p.logo);
     startTyped(p.taglines || [], p.typingLoop === true);
     if (state.draft) showDraftBanner();
     if (K.isAdmin()) showEditFab();
@@ -92,12 +93,24 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
   }
 
+  // Inline an SVG logo so its colors follow the theme toggle; drops scripts and event handlers.
+  function inlineSvg(host, url) {
+    fetch(safeUrl(url)).then(r => r.ok ? r.text() : Promise.reject()).then(txt => {
+      const doc = new DOMParser().parseFromString(txt, 'image/svg+xml');
+      const svg = doc.documentElement;
+      if (svg.nodeName.toLowerCase() !== 'svg') return;
+      svg.querySelectorAll('script, foreignObject').forEach(n => n.remove());
+      svg.querySelectorAll('*').forEach(n => Array.from(n.attributes).forEach(a => { if (/^on/i.test(a.name) || /javascript:/i.test(a.value)) n.removeAttribute(a.name); }));
+      host.replaceChildren(document.importNode(svg, true));
+    }).catch(() => { /* keep the <img> fallback */ });
+  }
+
   function hero(p, showName) {
     const icons = (p.links || []).filter(iconKey).map(l =>
       '<a class="icon-link" href="' + esc(safeUrl(l.url)) + '"' + ext(l.url) + ' aria-label="' + esc(l.label) + '" title="' + esc(l.label) + '">' + ICONS[iconKey(l)] + '</a>');
     if (p.email) icons.push('<a class="icon-link" href="mailto:' + esc(p.email) + '" aria-label="Email ' + esc(p.email) + '" title="' + esc(p.email) + '">' + ICONS.email + '</a>');
     return '<section class="hero wrap" id="top" data-edit="profile">' + pen('profile') +
-      (p.logo ? '<img class="logo" src="' + esc(safeUrl(p.logo)) + '" alt="KSV logo" width="140">' : '') +
+      (p.logo ? '<a class="logo" href="#top" id="logo" aria-label="KSV"><img src="' + esc(safeUrl(p.logo)) + '" alt="KSV logo"></a>' : '') +
       '<h1 class="name' + (showName ? '' : ' sr-only') + '">' + esc(p.name || '') + '</h1>' +
       (showName && p.headline ? '<p class="headline">' + esc(p.headline) + '</p>' : '') +
       ((p.taglines || []).length ? '<p class="typed mono" aria-live="off"><span id="typed"></span><span class="cursor">▍</span></p>' : '') +

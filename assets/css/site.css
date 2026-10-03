@@ -18,20 +18,21 @@
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
   --nav-h: 56px;
+  --logo-ink: #1f2328;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0b0d10; --bg-2: #11151a; --panel: #12161b; --panel-2: #181d23; --line: #222a33; --line-2: #2e3742;
     --text: #e8edf2; --muted: #9aa5b1; --faint: #6b7682; --accent: var(--accent-custom, #2fd3e6); --accent-ink: #001417;
-    --live: #2ecc85; --amber: #ffb020; --blue: #5aa9ff; --down: #ff5c6c;
+    --live: #2ecc85; --amber: #ffb020; --blue: #5aa9ff; --down: #ff5c6c; --logo-ink: #e8edf2;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0b0d10; --bg-2: #11151a; --panel: #12161b; --panel-2: #181d23; --line: #222a33; --line-2: #2e3742;
   --text: #e8edf2; --muted: #9aa5b1; --faint: #6b7682; --accent: var(--accent-custom, #2fd3e6); --accent-ink: #001417;
-  --live: #2ecc85; --amber: #ffb020; --blue: #5aa9ff; --down: #ff5c6c;
+  --live: #2ecc85; --amber: #ffb020; --blue: #5aa9ff; --down: #ff5c6c; --logo-ink: #e8edf2;
   color-scheme: dark;
 }
 
@@ -73,7 +74,8 @@ button { font: inherit; color: inherit; }
 
 /* ---------- hero / about ---------- */
 .hero { text-align: center; padding: 44px 0 8px; position: relative; }
-.logo { margin: 0 auto 18px; width: 140px; height: auto; }
+.logo { display: block; margin: 0 auto 16px; width: 132px; }
+.logo img, .logo svg { display: block; width: 100%; height: auto; }
 .name { font-size: clamp(34px, 6vw, 48px); line-height: 1.1; letter-spacing: -.02em; margin: 0 0 6px; font-weight: 800; }
 .headline { margin: 0; color: var(--muted); font-size: 18px; }
 .typed { color: var(--accent); font-size: 20px; min-height: 1.6em; margin: 0 0 22px; }

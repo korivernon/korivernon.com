@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 158.8 102" role="img" aria-label="KSV">
+  <style>
+    .c { fill: var(--logo-accent, #00e5ff); }
+    .d { fill: var(--logo-ink, #1f2328); }
+    @media (prefers-color-scheme: dark) { .d { fill: var(--logo-ink, #e8edf2); } }
+  </style>
+  <polygon class="c" points="0,22 18,19 22,38 60,8 88,0 29,48 55,69.5 44,84 23,59 30,82 12,72"/>
+  <polygon class="d" points="36,49 96,2 118,10 62,44 79,62 64,98 45,91 61,69"/>
+  <polygon class="c" points="72,95 107,22 124,14 106,63 137,17 154.8,24.8 126,68"/>
+</svg>
