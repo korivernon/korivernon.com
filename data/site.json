@@ -70,7 +70,8 @@
       "featured": true,
       "hidden": false,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": "images/projects/pomtrader.png"
     },
     {
       "id": "prediction-mm",
@@ -93,7 +94,8 @@
       "featured": true,
       "hidden": false,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": "images/projects/prediction-mm.png"
     },
     {
       "id": "emon",
@@ -115,7 +117,8 @@
       "featured": true,
       "hidden": false,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": "images/projects/emon.svg"
     },
     {
       "id": "neilio",
@@ -138,7 +141,8 @@
       "featured": false,
       "hidden": true,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "equitize",
@@ -159,7 +163,8 @@
       "featured": false,
       "hidden": false,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "procmon",
@@ -186,7 +191,8 @@
           "url": "https://github.com/korivernon/procmon"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": "images/projects/procmon.png"
     },
     {
       "id": "answering-machine",
@@ -213,7 +219,8 @@
           "url": "https://github.com/korivernon/automated_practice_answering_machine"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "referral-processing",
@@ -238,7 +245,8 @@
           "url": "https://github.com/korivernon/automated_referral_processing"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "amtrakker",
@@ -259,7 +267,8 @@
       "featured": false,
       "hidden": false,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "breakpull",
@@ -286,7 +295,8 @@
           "url": "https://github.com/korivernon/breakpull"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "jain-global",
@@ -312,7 +322,8 @@
           "url": "https://github.com/korivernon/jain_global_case_study"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "etrade-monitor",
@@ -333,7 +344,8 @@
       "featured": false,
       "hidden": false,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "crypto-bot",
@@ -359,7 +371,8 @@
           "url": "https://github.com/korivernon/crypto-bot"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "vol-scraper",
@@ -384,7 +397,8 @@
           "url": "https://github.com/korivernon/volatility-price-scraper"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "heatmap",
@@ -405,7 +419,8 @@
       "featured": false,
       "hidden": false,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "options-pricer",
@@ -430,7 +445,8 @@
           "url": "https://github.com/korivernon/cli-options-profit-pricer"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "obv-report",
@@ -455,7 +471,8 @@
           "url": "https://github.com/korivernon/Email-Stock-Report"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "stonks",
@@ -479,7 +496,8 @@
           "url": "stonks.html"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "stock-journal",
@@ -504,7 +522,8 @@
           "url": "https://github.com/korivernon/stock_journal_app"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "tesla-fleet",
@@ -530,7 +549,8 @@
           "url": "https://github.com/korivernon/tesla-fleet-manager"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "transcribe-whisper",
@@ -550,7 +570,8 @@
       "featured": false,
       "hidden": true,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "flask-proc-monitor",
@@ -575,7 +596,8 @@
           "url": "https://github.com/korivernon/flask_proc_monitor"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "bootleg-amphetamine",
@@ -596,7 +618,8 @@
       "featured": false,
       "hidden": true,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "tetherviewer",
@@ -621,7 +644,8 @@
           "url": "https://github.com/korivernon/TetherViewer"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "smp-daily-email",
@@ -646,7 +670,8 @@
           "url": "https://github.com/korivernon/smp-daily-email"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "multithread-email",
@@ -671,7 +696,8 @@
           "url": "https://github.com/korivernon/multithread-email-python"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "heic-to-jpg",
@@ -696,7 +722,8 @@
           "url": "https://github.com/korivernon/heic_to_jpg"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "vcfcard",
@@ -720,7 +747,8 @@
           "url": "https://github.com/korivernon/vcfcard"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "silent-ringtone",
@@ -744,7 +772,8 @@
           "url": "https://github.com/korivernon/silent-ringtone-iphone"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "bash-shortcuts",
@@ -768,7 +797,8 @@
           "url": "https://github.com/korivernon/Bash-Shortcuts"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "google-scraper",
@@ -793,7 +823,8 @@
           "url": "https://github.com/korivernon/GoogleScraper"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "ahia",
@@ -823,7 +854,8 @@
           "url": "https://github.com/korivernon/ahiasolutions.com"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "bsu-website",
@@ -844,7 +876,8 @@
       "featured": false,
       "hidden": true,
       "links": [],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "dine-safely",
@@ -869,7 +902,8 @@
           "url": "https://github.com/korivernon/dine-safe-ly"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "accessible-restaurants",
@@ -894,7 +928,8 @@
           "url": "https://github.com/korivernon/nyc-accessible-restaurant-advisor"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "hunger-warrior",
@@ -919,7 +954,8 @@
           "url": "https://github.com/korivernon/hungerwarriorapi"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "medicine-trackr",
@@ -943,7 +979,8 @@
           "url": "https://github.com/korivernon/medicine-trackr"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "giguy",
@@ -968,7 +1005,8 @@
           "url": "https://korivernon.github.io/GiGuyWebsiteRemodel/"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "website-template",
@@ -993,7 +1031,8 @@
           "url": "https://github.com/korivernon/personal-website-template"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "korivernon-com",
@@ -1019,7 +1058,8 @@
           "url": "https://github.com/korivernon/korivernon.com"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "learn-python",
@@ -1048,7 +1088,8 @@
           "url": "cs1114.html"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "astar",
@@ -1073,7 +1114,8 @@
           "url": "https://github.com/korivernon/AI-Project-1"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "all-about-algorithms",
@@ -1098,7 +1140,8 @@
           "url": "https://github.com/korivernon/All-About-Algorithms"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "iris",
@@ -1123,7 +1166,8 @@
           "url": "https://github.com/korivernon/Iris-Classification-Final-Project"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "blockchain-cpp",
@@ -1147,7 +1191,8 @@
           "url": "https://github.com/korivernon/BlockChainCPP"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "oop-cpp",
@@ -1171,7 +1216,8 @@
           "url": "https://github.com/korivernon/Object-Oriented-Programming"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "data-structures",
@@ -1195,7 +1241,8 @@
           "url": "https://github.com/korivernon/DataStructures"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "operating-systems",
@@ -1220,7 +1267,8 @@
           "url": "https://github.com/korivernon/Operating-Systems"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "store-inventory",
@@ -1245,7 +1293,8 @@
           "url": "https://github.com/korivernon/Store-Inventory"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "spreadsheet-viewer",
@@ -1270,7 +1319,8 @@
           "url": "https://github.com/korivernon/spreadsheet_viewer"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "calculator-ios",
@@ -1295,7 +1345,8 @@
           "url": "https://github.com/korivernon/Calculator-iOS-App"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     },
     {
       "id": "daily-coding-problem",
@@ -1319,7 +1370,8 @@
           "url": "https://github.com/korivernon/daily-coding-problem"
         }
       ],
-      "image": ""
+      "image": "",
+      "icon": ""
     }
   ],
   "experience": [
@@ -1554,10 +1606,6 @@
     {
       "label": "CS-1114",
       "url": "cs1114.html"
-    },
-    {
-      "label": "Contact form",
-      "url": "contact_me.html"
     }
   ],
   "educationImage": "images/kori_vernon_personality_pic.png"

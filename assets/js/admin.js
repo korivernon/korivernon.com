@@ -111,7 +111,8 @@
       { row: [{ k: 'start', label: 'Start', type: 'month' }, { k: 'end', label: 'End', type: 'month', hint: 'blank = ongoing' }, { k: 'conviction', label: 'Conviction', type: 'range', hint: 'how much it matters, 1–5. Drives auto-sort.' }] },
       { row: [{ k: 'featured', label: 'Featured (card at the top)', type: 'check' }, { k: 'hidden', label: 'Hidden from the site', type: 'check' }] },
       { k: 'links', label: 'Links', type: 'links' },
-      { k: 'image', label: 'Image', type: 'file', dir: 'images/projects', accept: 'image/*' },
+      { k: 'icon', label: 'App icon', type: 'file', dir: 'images/projects', accept: 'image/*', hint: 'small square icon shown next to the name' },
+      { k: 'image', label: 'Banner image', type: 'file', dir: 'images/projects', accept: 'image/*', hint: 'optional wide picture across the top of a featured card' },
       { k: 'id', label: 'ID (used in links like #p-id)', hint: 'auto from name if blank' },
     ],
     experience: [
@@ -141,7 +142,7 @@
       { row: [{ k: 'profile.location', label: 'Location' }, { k: 'profile.email', label: 'Public email' }] },
       { k: 'profile.resume', label: 'Resume PDF', type: 'file', dir: 'documents', accept: 'application/pdf', keepName: true },
       { k: 'profile.photo', label: 'Photo', type: 'file', dir: 'images', accept: 'image/*' },
-      { k: 'profile.links', label: 'Buttons / social links', type: 'links' },
+      { k: 'profile.links', label: 'Links', type: 'links', hint: 'Label a link GitHub or LinkedIn and it shows as an icon under your photo. Any other label (e.g. Ahïa Solutions) goes in the top navigation, before Resumé. The email icon comes from “Public email” above.' },
     ],
     extras: [
       { k: 'categories', label: 'Project categories (filter chips, in order)', type: 'list' },
@@ -152,7 +153,7 @@
       { k: 'beyond.video', label: 'Video embed URL', hint: 'YouTube/Vimeo embed link, e.g. https://www.youtube-nocookie.com/embed/ID' },
       { k: 'beyond.hidden', label: 'Hide the “Beyond” section', type: 'check' },
       { row: [{ k: 'quote.text', label: 'Footer quote', type: 'textarea', rows: 2 }, { k: 'quote.by', label: 'Quote by' }] },
-      { k: 'archive', label: 'Footer links (old pages etc.)', type: 'links' },
+      { k: 'archive', label: 'Hidden “More” menu links', type: 'links', hint: 'Shown only when someone opens the More menu in the top navigation.' },
     ],
     settings: [
       { k: 'settings.showName', label: 'Show my name and headline at the top', type: 'check' },
@@ -171,7 +172,7 @@
     projects: {
       label: 'Projects', sortKey: 'projectSort', sorter: (l, m) => K.sortProjects(l, m), feature: true,
       sym: x => x.symbol, title: x => x.name, sub: x => [x.category, x.status, K.fmtRange(x.start, x.end), '●'.repeat(Number(x.conviction) || 0)].join(' · '),
-      blank: () => ({ id: '', symbol: '', name: '', summary: '', description: '', category: (S.data.categories || ['Trading'])[0], stack: [], status: 'building', start: new Date().toISOString().slice(0, 7), end: null, conviction: 3, featured: false, hidden: false, links: [], image: '' }),
+      blank: () => ({ id: '', symbol: '', name: '', icon: '', summary: '', description: '', category: (S.data.categories || ['Trading'])[0], stack: [], status: 'building', start: new Date().toISOString().slice(0, 7), end: null, conviction: 3, featured: false, hidden: false, links: [], image: '' }),
       idFrom: x => slug(x.name),
     },
     experience: {
@@ -216,7 +217,7 @@
       case 'range': return '<label class="field">' + lab + '<input type="range" min="1" max="5" step="1"' + a + ' value="' + esc(v || 3) + '"><small class="mono" data-range-out="' + id + '">' + '●'.repeat(Number(v) || 3) + '</small>' + hint + '</label>';
       case 'select': return '<label class="field">' + lab + '<select' + a + '>' + f.opts.map(o => '<option value="' + esc(o[0]) + '"' + ((v || f.opts[0][0]) === o[0] ? ' selected' : '') + '>' + esc(o[1]) + '</option>').join('') + '</select>' + hint + '</label>';
       case 'category': return '<label class="field">' + lab + '<input type="text" list="cat-list"' + a + ' value="' + esc(v || '') + '"><datalist id="cat-list">' + (S.data.categories || []).map(c => '<option value="' + esc(c) + '">').join('') + '</datalist><small>pick one or type a new category</small></label>';
-      case 'links': return '<div class="field">' + lab + '<div class="rep" data-links="' + esc(f.k) + '">' + (v || []).map((l, i) => linkRow(f.k, l, i)).join('') + '</div><div><button type="button" class="btn sm" data-add-link="' + esc(f.k) + '">+ Add link</button></div></div>';
+      case 'links': return '<div class="field">' + lab + '<div class="rep" data-links="' + esc(f.k) + '">' + (v || []).map((l, i) => linkRow(f.k, l, i)).join('') + '</div><div><button type="button" class="btn sm" data-add-link="' + esc(f.k) + '">+ Add link</button></div>' + hint + '</div>';
       case 'file': return '<div class="field">' + lab + '<div class="upl">' + (v && f.accept === 'image/*' ? '<img class="thumb" src="../' + esc(v) + '" alt="">' : '') +
         '<input type="text"' + a + ' value="' + esc(v || '') + '" placeholder="' + esc(f.dir) + '/file">' +
         '<label class="btn sm" style="cursor:pointer">Upload<input type="file" hidden accept="' + esc(f.accept) + '" data-upload="' + esc(f.k) + '" data-dir="' + esc(f.dir) + '"' + (f.keepName ? ' data-keep="1"' : '') + '></label></div>' +
@@ -350,7 +351,7 @@
     if (S.view === 'raw') return renderRaw(v);
     const hints = {
       profile: 'The top of the page: typing text, photo, buttons, resume and your About Me.',
-      extras: 'The Education picture, categories, interests, the “Beyond” section, the footer quote and footer links.',
+      extras: 'The Education picture, categories, interests, the “Beyond” section, the footer quote and the hidden More menu.',
       settings: 'Turn whole sections on or off, choose the ordering, and set the accent color. Individual projects, jobs and licenses have an On/Off switch in their own tabs.',
     };
     v.innerHTML = '<p class="hint">' + (hints[S.view] || '') + '</p><div class="formcard" id="form">' + formHtml(SCHEMA[S.view], S.data) + '</div>';

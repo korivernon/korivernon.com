@@ -62,6 +62,12 @@ button { font: inherit; color: inherit; }
 .nav-links { display: flex; gap: 20px; font-size: 14px; font-weight: 500; overflow-x: auto; scrollbar-width: none; }
 .nav-links a { text-decoration: none; white-space: nowrap; color: var(--muted); }
 .nav-links a:hover { color: var(--text); }
+.more-menu { position: relative; flex-shrink: 0; }
+.more-btn { background: none; border: 0; cursor: pointer; font-size: 14px; font-weight: 500; color: var(--muted); padding: 6px 2px; }
+.more-btn:hover, .more-btn[aria-expanded="true"] { color: var(--text); }
+.more-panel { position: absolute; right: 0; top: calc(100% + 8px); min-width: 180px; display: grid; padding: 6px; background: var(--panel); border: 1px solid var(--line-2); border-radius: 10px; box-shadow: 0 12px 32px -12px rgba(0,0,0,.25); z-index: 30; }
+.more-panel a { padding: 8px 10px; border-radius: 6px; text-decoration: none; font-size: 14px; color: var(--text); }
+.more-panel a:hover { background: var(--panel-2); color: var(--accent); }
 .icon-btn { background: none; border: 1px solid var(--line-2); border-radius: 8px; height: 32px; min-width: 32px; cursor: pointer; color: var(--muted); flex-shrink: 0; }
 .icon-btn:hover { color: var(--text); border-color: var(--accent); }
 
@@ -72,9 +78,10 @@ button { font: inherit; color: inherit; }
 .headline { margin: 0; color: var(--muted); font-size: 18px; }
 .typed { color: var(--accent); font-size: 20px; min-height: 1.6em; margin: 0 0 22px; }
 .photo { width: 240px; height: 240px; border-radius: 50%; object-fit: cover; margin: 0 auto 18px; background: var(--bg-2); }
-.hero-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 36px; }
-.pill-link { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-2); text-decoration: none; font-size: 14px; font-weight: 600; }
-.pill-link:hover { border-color: var(--accent); }
+.hero-links { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 32px; }
+.icon-link { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--text); text-decoration: none; transition: color .15s, background .15s; }
+.icon-link svg { width: 24px; height: 24px; }
+.icon-link:hover { color: var(--accent); background: var(--panel-2); }
 .bio { text-align: left; color: var(--muted); font-size: 17px; max-width: 70ch; margin: 0 auto; }
 .bio p { margin: 0 0 14px; }
 
@@ -92,7 +99,10 @@ section.block { padding: 56px 0 0; position: relative; }
 .card .img { margin: -18px -18px 14px; aspect-ratio: 16/7; overflow: hidden; border-radius: var(--radius) var(--radius) 0 0; background: var(--bg-2); }
 .card .img img { width: 100%; height: 100%; object-fit: cover; }
 .card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.card h3 { margin: 0; font-size: 18px; }
+.card h3 { margin: 0; font-size: 18px; flex: 1; min-width: 0; }
+.picon { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; object-fit: cover; }
+.picon.sm { width: 22px; height: 22px; border-radius: 6px; display: inline-block; vertical-align: -5px; margin-right: 8px; }
+.card-top { justify-content: flex-start; }
 .card p { color: var(--muted); margin: 6px 0 12px; font-size: 15px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .tag { font: 500 11.5px var(--mono); color: var(--muted); background: var(--panel-2); border-radius: 6px; padding: 2px 8px; }
@@ -193,3 +203,4 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); padding: 40px 0 48
   html { scroll-behavior: auto; }
   .cursor { animation: none; }
 }
+.more-panel[hidden], .more-menu[hidden] { display: none; }

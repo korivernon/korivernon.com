@@ -22,6 +22,8 @@
     const s = d.settings || {};
     if (s.accent && /^#[0-9a-f]{3,8}$/i.test(s.accent)) document.documentElement.style.setProperty('--accent-custom', s.accent);
     if (p.resume) $('#nav-resume').href = safeUrl(p.resume);
+    renderNavLinks(p);
+    renderMoreMenu(d.archive || []);
 
     const projects = vis(d.projects);
     const exp = K.sortByDates(vis(d.experience), s.experienceSort);
@@ -57,11 +59,43 @@
       '<h2 class="sec-title">' + esc(title) + '</h2><div class="heading-line"></div>' + body + '</section>';
   }
 
+  // Links with a known icon show under the photo; every other link goes in the top navigation.
+  const ICONS = {
+    github: '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>',
+    email: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+  };
+  const iconKey = l => { const k = String(l.label || '').toLowerCase().replace(/[^a-z]/g, ''); return ICONS[k] ? k : null; };
+
+  function renderNavLinks(p) {
+    $$('.nav-links [data-extra]').forEach(a => a.remove());
+    const resume = $('#nav-resume');
+    resume.hidden = !p.resume;
+    (p.links || []).filter(l => !iconKey(l)).forEach(l => {
+      const a = document.createElement('a');
+      a.dataset.extra = '1'; a.href = safeUrl(l.url); a.textContent = l.label;
+      if (isExternal(l.url)) { a.target = '_blank'; a.rel = 'noopener'; }
+      resume.before(a);
+    });
+  }
+
+  // Small "More" dropdown for older pages (Resources, Learn Python, CS-1114).
+  function renderMoreMenu(items) {
+    const menu = $('#more-menu'), btn = $('#more-btn'), panel = $('#more-panel');
+    menu.hidden = !items.length;
+    panel.innerHTML = items.map(l => link(l.url, l.label)).join('');
+    if (menu.dataset.wired) return;
+    menu.dataset.wired = '1';
+    const set = open => { panel.hidden = !open; btn.setAttribute('aria-expanded', open); };
+    btn.addEventListener('click', e => { e.stopPropagation(); set(panel.hidden); });
+    document.addEventListener('click', e => { if (!menu.contains(e.target)) set(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+  }
+
   function hero(p, showName) {
-    const icons = [];
-    (p.links || []).forEach(l => icons.push(link(l.url, l.label, 'pill-link')));
-    if (p.email) icons.push('<a class="pill-link" href="mailto:' + esc(p.email) + '">Email</a>');
-    if (p.resume) icons.push(link(p.resume, 'Resumé', 'pill-link'));
+    const icons = (p.links || []).filter(iconKey).map(l =>
+      '<a class="icon-link" href="' + esc(safeUrl(l.url)) + '"' + ext(l.url) + ' aria-label="' + esc(l.label) + '" title="' + esc(l.label) + '">' + ICONS[iconKey(l)] + '</a>');
+    if (p.email) icons.push('<a class="icon-link" href="mailto:' + esc(p.email) + '" aria-label="Email ' + esc(p.email) + '" title="' + esc(p.email) + '">' + ICONS.email + '</a>');
     return '<section class="hero wrap" id="top" data-edit="profile">' + pen('profile') +
       (p.logo ? '<img class="logo" src="' + esc(safeUrl(p.logo)) + '" alt="KSV logo" width="140">' : '') +
       '<h1 class="name' + (showName ? '' : ' sr-only') + '">' + esc(p.name || '') + '</h1>' +
@@ -90,7 +124,8 @@
   function card(x) {
     return '<article class="card" data-edit="projects/' + esc(x.id) + '">' + pen('projects/' + x.id) +
       (x.image ? '<div class="img"><img src="' + esc(safeUrl(x.image)) + '" alt="" loading="lazy"></div>' : '') +
-      '<div class="card-top"><h3>' + esc(x.name) + '</h3><span class="status ' + esc(x.status) + '">' + esc(x.status) + '</span></div>' +
+      '<div class="card-top">' + (x.icon ? '<img class="picon" src="' + esc(safeUrl(x.icon)) + '" alt="" width="40" height="40">' : '') +
+        '<h3>' + esc(x.name) + '</h3><span class="status ' + esc(x.status) + '">' + esc(x.status) + '</span></div>' +
       '<p>' + inline(x.summary) + '</p>' +
       '<div class="tags">' + (x.stack || []).map(t => '<span class="tag">' + esc(t) + '</span>').join('') + '</div>' +
       ((x.links || []).length ? '<div class="links">' + x.links.map(l => link(l.url, l.label + ' ↗')).join('') + '</div>' : '') +
@@ -106,7 +141,7 @@
       const open = state.open.has(x.id);
       return '<div class="prow' + (open ? ' open' : '') + '" id="p-' + esc(x.id) + '">' +
         '<button type="button" class="prow-btn" data-id="' + esc(x.id) + '" aria-expanded="' + open + '">' +
-          '<span class="pname">' + esc(x.name) + '</span>' +
+          '<span class="pname">' + (x.icon ? '<img class="picon sm" src="' + esc(safeUrl(x.icon)) + '" alt="" width="22" height="22">' : '') + esc(x.name) + '</span>' +
           '<span class="psum">' + esc(x.summary) + '</span>' +
           '<span class="pyear mono">' + esc(year(x.start)) + '</span>' +
         '</button>' +
@@ -181,7 +216,6 @@
     return '<footer><div class="wrap">' +
       (q.text ? '<p class="quote">“' + esc(q.text) + '”</p><p class="quote-by">— ' + esc(q.by || '') + '</p>' : '') +
       '<div class="foot-links">' +
-        (d.archive || []).map(l => link(l.url, l.label)).join('') +
         '<a href="classic.html">Classic site</a>' +
         '<a href="https://github.com/korivernon/korivernon.com" target="_blank" rel="noopener">Website source code</a>' +
       '</div>' +
