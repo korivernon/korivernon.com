@@ -1,0 +1,1571 @@
+{
+  "profile": {
+    "name": "Kori S. Vernon",
+    "ticker": "KSV",
+    "headline": "Electronic Sales Trader @ Morgan Stanley",
+    "taglines": [
+      "builds trading systems.",
+      "quotes two-sided markets.",
+      "ships AI agents that do real work.",
+      "automates the boring parts."
+    ],
+    "bio": "I cover retail aggregators, market makers, exchanges and broker-dealers in US equities and options on Morgan Stanley's Electronic Trading (MSET) desk. Before that I was an engineer: production support for automated market making, then data and ML for the firm's internal trading apps.\n\nAfter hours I build my own stack: a multi-broker trading platform with execution algos and AI research agents, a Kalshi/Polymarket market maker, and an options volatility scanner. I also run Ahïa Solutions, building software for small businesses.\n\nNYU Tandon CS, minor in Math. Born and raised in Raleigh, NC. Now in New York.",
+    "location": "New York, NY",
+    "email": "me@korivernon.com",
+    "resume": "documents/Kori_Vernon_CV.pdf",
+    "photo": "images/kori_vernon_circle.png",
+    "logo": "images/new.png",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/korivernon"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/korivernon"
+      },
+      {
+        "label": "Ahïa Solutions",
+        "url": "https://ahiasolutions.com"
+      }
+    ]
+  },
+  "settings": {
+    "projectSort": "auto",
+    "experienceSort": "auto",
+    "showTicker": true,
+    "showMarketClock": true,
+    "accent": "#00d084"
+  },
+  "categories": [
+    "Trading",
+    "AI & Automation",
+    "Web",
+    "Tools",
+    "Coursework"
+  ],
+  "projects": [
+    {
+      "id": "pomtrader",
+      "symbol": "POMT",
+      "name": "PomTrader",
+      "summary": "Personal trading platform: every brokerage account in one place, with execution algos, hedging and AI research.",
+      "description": "Aggregates E*TRADE, Robinhood, Gemini and other accounts (via SnapTrade and direct APIs) into one Flask + Postgres dashboard. Runs a live systematic SOXL/SOXS strategy on MACD + RSI signals with more strategies in paper, TWAP and fractional-TWAP execution algos, a hedging engine that sizes ETF, option and beta hedges to exposure, an AI portfolio manager built from LLM agents, a congressional-trade copier and a News & Insights research tab with deterministic 5-pillar scoring.",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "Flask",
+        "Postgres",
+        "LLMs",
+        "E*TRADE API",
+        "SnapTrade"
+      ],
+      "status": "live",
+      "start": "2026-08",
+      "end": null,
+      "conviction": 5,
+      "featured": true,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "prediction-mm",
+      "symbol": "PMM",
+      "name": "Sports Event Market Maker",
+      "summary": "Automated two-sided quoting on Kalshi and Polymarket, priced off a proprietary model.",
+      "description": "Quotes every sports market on both venues from a fair-value model. Per-event exposure limits, inventory skew to manage risk, and deliberate accumulation into games where the model is most confident. Has a news engine that matches headlines to quoted markets, a kill switch with text alerts, and a mobile dashboard where API keys are encrypted at rest and hot-swapped into the live adapters.",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "FastAPI",
+        "Kalshi API",
+        "Polymarket CLOB",
+        "SQLite/Postgres"
+      ],
+      "status": "live",
+      "start": "2026-08",
+      "end": null,
+      "conviction": 5,
+      "featured": true,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "emon",
+      "symbol": "EMON",
+      "name": "Equities Monitor (EMon)",
+      "summary": "Volatility-outlier and earnings options research engine scanning ~6,900 US equities every 15 minutes.",
+      "description": "IVOMRO (Intraday Volatility Outlier Mean Reversion Options) flags names whose move exceeds 3-month realized vol, prices candidate options with Black-Scholes using realized vs implied vol, and opens simulated positions with P&L tracking and rule-based exits. EEO ranks earnings plays by historical post-earnings moves. Includes a paper iron-condor book and email/PDF morning reports.",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "Postgres",
+        "Black-Scholes",
+        "Scheduling"
+      ],
+      "status": "live",
+      "start": "2023-04",
+      "end": null,
+      "conviction": 5,
+      "featured": true,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "neilio",
+      "symbol": "NEIL",
+      "name": "Neilio",
+      "summary": "Call the line first, see the market after: a blind sports-prediction PWA.",
+      "description": "Mobile-first web app where you set your own line (spread, moneyline, decimal, fractional, cents or percent) before any prices are shown, then compare it to Polymarket and the books after locking. Its model board also feeds the market maker's quote skew.",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "PWA",
+        "Postgres",
+        "ESPN API",
+        "Polymarket"
+      ],
+      "status": "live",
+      "start": "2026-09",
+      "end": null,
+      "conviction": 4,
+      "featured": true,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "equitize",
+      "symbol": "EQTZ",
+      "name": "Equitize",
+      "summary": "Read-only companion app to PomTrader for sharing a portfolio view safely.",
+      "description": "A slimmer front end on top of PomTrader's data, with a route allowlist, sign-in with username + password + PIN, and per-minute polling only while signed in.",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "Flask",
+        "Postgres"
+      ],
+      "status": "live",
+      "start": "2026-09",
+      "end": null,
+      "conviction": 3,
+      "featured": false,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "procmon",
+      "symbol": "PROC",
+      "name": "procmon",
+      "summary": "Process monitor PWA: start/stop/restart services, tail logs, get a text when something crashes.",
+      "description": "Runs the rest of my stack. Desired-state tracking, autostart, crash detection with iMessage alerts, log viewer and a home-screen app for phones.",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "Flask",
+        "Postgres",
+        "PWA"
+      ],
+      "status": "live",
+      "start": "2026-08",
+      "end": null,
+      "conviction": 4,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/procmon"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "answering-machine",
+      "symbol": "AAM",
+      "name": "AI Practice Answering Machine",
+      "summary": "Phone answering machine that triages calls for a medical practice.",
+      "description": "Picks up calls, works out what the caller needs and routes or records it so staff can follow up, instead of sending everything to voicemail.",
+      "category": "AI & Automation",
+      "stack": [
+        "Python",
+        "FastAPI",
+        "Telephony",
+        "LLMs"
+      ],
+      "status": "shipped",
+      "start": "2025-10",
+      "end": "2025-11",
+      "conviction": 4,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/automated_practice_answering_machine"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "referral-processing",
+      "symbol": "REFR",
+      "name": "Automated Referral Processing",
+      "summary": "Picks up patient referrals, documents them and enters them into eClinicalWorks.",
+      "description": "Removes the manual step of re-keying incoming referrals into the practice's records system.",
+      "category": "AI & Automation",
+      "stack": [
+        "Python",
+        "Automation"
+      ],
+      "status": "shipped",
+      "start": "2025-10",
+      "end": "2025-11",
+      "conviction": 4,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/automated_referral_processing"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "amtrakker",
+      "symbol": "AMTK",
+      "name": "amtrakker",
+      "summary": "Amtrak fare monitoring dashboard that watches routes and alerts on price drops.",
+      "description": "Scheduled fare scraping, price history per route and text alerts when a fare hits a target.",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "Flask",
+        "Scheduling"
+      ],
+      "status": "live",
+      "start": "2026-09",
+      "end": null,
+      "conviction": 3,
+      "featured": false,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "breakpull",
+      "symbol": "BRKP",
+      "name": "breakpull",
+      "summary": "Pulls movie news breaks: TMDB and news outlets, sentiment scored and exported to Excel and email.",
+      "description": "Collects upcoming titles from TMDB, pulls coverage across outlets, scores sentiment and sends a formatted Excel digest.",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "Flask",
+        "NewsAPI",
+        "TMDB"
+      ],
+      "status": "shipped",
+      "start": "2026-09",
+      "end": "2026-09",
+      "conviction": 3,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/breakpull"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "jain-global",
+      "symbol": "JAIN",
+      "name": "Investment Data REST API",
+      "summary": "Case study: a REST API that fetches, processes and serves market data for an investment shop.",
+      "description": "Endpoints for prices, returns and fundamentals with caching and a written methodology.",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "REST",
+        "yfinance"
+      ],
+      "status": "shipped",
+      "start": "2024-05",
+      "end": "2024-05",
+      "conviction": 3,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/jain_global_case_study"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "etrade-monitor",
+      "symbol": "ETRD",
+      "name": "E*TRADE Monitor",
+      "summary": "E*TRADE API client and account monitor, the seed of PomTrader.",
+      "description": "OAuth flow, positions and order monitoring, with plans for a trade journal and fair-value pricer.",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "E*TRADE API",
+        "OAuth"
+      ],
+      "status": "archived",
+      "start": "2023-03",
+      "end": "2023-12",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "crypto-bot",
+      "symbol": "CRYP",
+      "name": "Crypto Trading Bots",
+      "summary": "RSI bot, TradingView-webhook bot and a coin viewer.",
+      "description": "Signal bots that trade on RSI thresholds and TradingView alerts, plus research notebooks.",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "Jupyter",
+        "TradingView"
+      ],
+      "status": "archived",
+      "start": "2023-05",
+      "end": "2023-07",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/crypto-bot"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "vol-scraper",
+      "symbol": "VOLS",
+      "name": "Volatility Price Scraper",
+      "summary": "Options volatility and price scraping notebooks.",
+      "description": "",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "Jupyter"
+      ],
+      "status": "archived",
+      "start": "2023-03",
+      "end": "2023-04",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/volatility-price-scraper"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "heatmap",
+      "symbol": "HEAT",
+      "name": "Stock Sentiment Treemap",
+      "summary": "Zoomable treemap of stocks by sector: size by volume, color by gain/loss and headline sentiment.",
+      "description": "",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "D3",
+        "Jupyter"
+      ],
+      "status": "archived",
+      "start": "2023-01",
+      "end": "2023-02",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "options-pricer",
+      "symbol": "OPTN",
+      "name": "CLI Options Profit Pricer",
+      "summary": "Command-line calculator to plan exits on call option positions.",
+      "description": "",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "CLI"
+      ],
+      "status": "archived",
+      "start": "2020-10",
+      "end": "2020-10",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/cli-options-profit-pricer"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "obv-report",
+      "symbol": "OBV",
+      "name": "Email Stock Report",
+      "summary": "Daily email of the biggest on-balance-volume movers.",
+      "description": "",
+      "category": "Trading",
+      "stack": [
+        "Python",
+        "SMTP"
+      ],
+      "status": "archived",
+      "start": "2020-08",
+      "end": "2020-08",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/Email-Stock-Report"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "stonks",
+      "symbol": "STNK",
+      "name": "Stonks",
+      "summary": "Early stock tracking page.",
+      "description": "",
+      "category": "Trading",
+      "stack": [
+        "JavaScript"
+      ],
+      "status": "archived",
+      "start": "2020-12",
+      "end": "2020-12",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "Page",
+          "url": "stonks.html"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "stock-journal",
+      "symbol": "JRNL",
+      "name": "Stock Journal App",
+      "summary": "iOS trade journal app.",
+      "description": "",
+      "category": "Trading",
+      "stack": [
+        "Swift",
+        "iOS"
+      ],
+      "status": "archived",
+      "start": "2020-09",
+      "end": "2020-09",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/stock_journal_app"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "tesla-fleet",
+      "symbol": "TSLA",
+      "name": "Tesla Fleet Manager",
+      "summary": "Flask app on the Tesla API for managing a rental fleet on Turo.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "Flask",
+        "Tesla API"
+      ],
+      "status": "archived",
+      "start": "2022-01",
+      "end": "2022-01",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/tesla-fleet-manager"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "transcribe-whisper",
+      "symbol": "WSPR",
+      "name": "Whisper Transcriber",
+      "summary": "Local speech-to-text pipeline on OpenAI Whisper.",
+      "description": "",
+      "category": "AI & Automation",
+      "stack": [
+        "Python",
+        "Whisper"
+      ],
+      "status": "shipped",
+      "start": "2023-10",
+      "end": "2023-10",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "flask-proc-monitor",
+      "symbol": "FPM",
+      "name": "flask_proc_monitor",
+      "summary": "First version of procmon.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "Flask"
+      ],
+      "status": "archived",
+      "start": "2023-12",
+      "end": "2023-12",
+      "conviction": 1,
+      "featured": false,
+      "hidden": true,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/flask_proc_monitor"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "bootleg-amphetamine",
+      "symbol": "AMPH",
+      "name": "bootleg-amphetamine",
+      "summary": "Keeps a Mac awake with the lid closed, plus a mouse jiggler. Because Amphetamine broke.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "pynput",
+        "macOS"
+      ],
+      "status": "shipped",
+      "start": "2024-07",
+      "end": "2024-07",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "tetherviewer",
+      "symbol": "TTHR",
+      "name": "TetherViewer",
+      "summary": "Tethered-shooting viewer that shows photos as they land in a watched folder.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "GUI"
+      ],
+      "status": "shipped",
+      "start": "2023-07",
+      "end": "2023-07",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/TetherViewer"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "smp-daily-email",
+      "symbol": "SMP",
+      "name": "SMP Daily Email",
+      "summary": "Scheduled daily email report.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "SMTP"
+      ],
+      "status": "archived",
+      "start": "2023-02",
+      "end": "2023-02",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/smp-daily-email"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "multithread-email",
+      "symbol": "MTE",
+      "name": "Multithreaded Email Sender",
+      "summary": "Threaded bulk email sender in Python.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "Threading"
+      ],
+      "status": "archived",
+      "start": "2022-11",
+      "end": "2022-11",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/multithread-email-python"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "heic-to-jpg",
+      "symbol": "HEIC",
+      "name": "heic_to_jpg",
+      "summary": "HEIC to JPG converter with an optional GUI.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "Tkinter"
+      ],
+      "status": "archived",
+      "start": "2021-08",
+      "end": "2021-08",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/heic_to_jpg"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "vcfcard",
+      "symbol": "VCF",
+      "name": "vcfcard",
+      "summary": "Python module that generates vCard contact files.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python"
+      ],
+      "status": "archived",
+      "start": "2021-08",
+      "end": "2021-08",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/vcfcard"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "silent-ringtone",
+      "symbol": "SLNT",
+      "name": "Silent Ringtone for iPhone",
+      "summary": "A free, truly silent iPhone ringtone, because finding one was impossible.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "iOS"
+      ],
+      "status": "shipped",
+      "start": "2023-01",
+      "end": "2023-01",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/silent-ringtone-iphone"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "bash-shortcuts",
+      "symbol": "BASH",
+      "name": "Bash Shortcuts",
+      "summary": "Home-directory shell shortcuts.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Shell"
+      ],
+      "status": "archived",
+      "start": "2020-08",
+      "end": "2020-08",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/Bash-Shortcuts"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "google-scraper",
+      "symbol": "GSCR",
+      "name": "GoogleScraper",
+      "summary": "Link and title scraper for Google results.",
+      "description": "",
+      "category": "Tools",
+      "stack": [
+        "Python",
+        "Selenium"
+      ],
+      "status": "archived",
+      "start": "2020-03",
+      "end": "2020-03",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/GoogleScraper"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "ahia",
+      "symbol": "AHIA",
+      "name": "Ahïa Solutions",
+      "summary": "My company's site: software, digital marketing and rental operations for small businesses.",
+      "description": "",
+      "category": "Web",
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "status": "live",
+      "start": "2018-05",
+      "end": null,
+      "conviction": 3,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "Site",
+          "url": "https://ahiasolutions.com"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/ahiasolutions.com"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "bsu-website",
+      "symbol": "BSU",
+      "name": "NYU Black Student Union Website",
+      "summary": "The official website for NYU's Black Student Union.",
+      "description": "",
+      "category": "Web",
+      "stack": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "status": "shipped",
+      "start": "2022-12",
+      "end": "2023-01",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [],
+      "image": ""
+    },
+    {
+      "id": "dine-safely",
+      "symbol": "DINE",
+      "name": "Dine Safe-ly",
+      "summary": "NYC restaurant finder built on daily COVID-19 inspection data.",
+      "description": "Shows the latest compliance status for reopened NYC restaurants.",
+      "category": "Web",
+      "stack": [
+        "JavaScript",
+        "NYC Open Data"
+      ],
+      "status": "archived",
+      "start": "2021-02",
+      "end": "2021-02",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/dine-safe-ly"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "accessible-restaurants",
+      "symbol": "NYCA",
+      "name": "NYC Accessible Restaurant Advisor",
+      "summary": "Finds wheelchair-accessible restaurants in NYC.",
+      "description": "",
+      "category": "Web",
+      "stack": [
+        "HTML",
+        "JavaScript"
+      ],
+      "status": "archived",
+      "start": "2020-12",
+      "end": "2020-12",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/nyc-accessible-restaurant-advisor"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "hunger-warrior",
+      "symbol": "HUNG",
+      "name": "Hunger Warrior",
+      "summary": "Hackathon app and API connecting surplus food with people who need it.",
+      "description": "",
+      "category": "Web",
+      "stack": [
+        "Python",
+        "API"
+      ],
+      "status": "archived",
+      "start": "2021-12",
+      "end": "2021-12",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/hungerwarriorapi"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "medicine-trackr",
+      "symbol": "MEDS",
+      "name": "medicine-trackr",
+      "summary": "Medication tracking web app.",
+      "description": "",
+      "category": "Web",
+      "stack": [
+        "JavaScript"
+      ],
+      "status": "archived",
+      "start": "2021-12",
+      "end": "2021-12",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/medicine-trackr"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "giguy",
+      "symbol": "GIGY",
+      "name": "GI Guy Website Remodel",
+      "summary": "Website redesign for a gastroenterology practice.",
+      "description": "",
+      "category": "Web",
+      "stack": [
+        "HTML",
+        "CSS"
+      ],
+      "status": "archived",
+      "start": "2020-05",
+      "end": "2020-05",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "Demo",
+          "url": "https://korivernon.github.io/GiGuyWebsiteRemodel/"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "website-template",
+      "symbol": "TMPL",
+      "name": "Personal Website Template",
+      "summary": "A free portfolio template anyone can fork.",
+      "description": "",
+      "category": "Web",
+      "stack": [
+        "HTML",
+        "CSS"
+      ],
+      "status": "archived",
+      "start": "2021-09",
+      "end": "2021-09",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/personal-website-template"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "korivernon-com",
+      "symbol": "KSV",
+      "name": "korivernon.com",
+      "summary": "This site: a static page with a GitHub-backed admin console.",
+      "description": "Plain HTML, CSS and JS on GitHub Pages. Content lives in one JSON file that a private admin page edits and commits through the GitHub API.",
+      "category": "Web",
+      "stack": [
+        "JavaScript",
+        "GitHub Pages",
+        "GitHub API"
+      ],
+      "status": "live",
+      "start": "2019-06",
+      "end": null,
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/korivernon.com"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "learn-python",
+      "symbol": "LPY",
+      "name": "Learn Python (CS-1114 resources)",
+      "summary": "Teaching material I wrote as an Intro to Programming TA at NYU.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "Python",
+        "Teaching"
+      ],
+      "status": "shipped",
+      "start": "2019-08",
+      "end": "2022-01",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "Page",
+          "url": "learn_python.html"
+        },
+        {
+          "label": "CS-1114",
+          "url": "cs1114.html"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "astar",
+      "symbol": "ASTR",
+      "name": "A* 15-Puzzle Solver",
+      "summary": "A* graph search with a chessboard-distance heuristic for the 15-puzzle.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "Python",
+        "AI"
+      ],
+      "status": "archived",
+      "start": "2021-04",
+      "end": "2021-04",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/AI-Project-1"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "all-about-algorithms",
+      "symbol": "ALGO",
+      "name": "All About Algorithms",
+      "summary": "A PyGame quiz app for practicing algorithms.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "Python",
+        "PyGame"
+      ],
+      "status": "archived",
+      "start": "2020-04",
+      "end": "2020-04",
+      "conviction": 2,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/All-About-Algorithms"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "iris",
+      "symbol": "IRIS",
+      "name": "Iris Classification",
+      "summary": "CS-1114 final project: classifying a test set from a training set.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "Python",
+        "ML"
+      ],
+      "status": "archived",
+      "start": "2020-02",
+      "end": "2020-02",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/Iris-Classification-Final-Project"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "blockchain-cpp",
+      "symbol": "BLKC",
+      "name": "BlockChainCPP",
+      "summary": "A toy blockchain in C++.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "C++"
+      ],
+      "status": "archived",
+      "start": "2020-04",
+      "end": "2020-04",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/BlockChainCPP"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "oop-cpp",
+      "symbol": "OOP",
+      "name": "Object-Oriented Programming in C++",
+      "summary": "NYU Tandon OOP coursework.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "C++"
+      ],
+      "status": "archived",
+      "start": "2020-07",
+      "end": "2020-07",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/Object-Oriented-Programming"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "data-structures",
+      "symbol": "DSA",
+      "name": "Data Structures in C++",
+      "summary": "Labs and lecture code from Data Structures.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "C++"
+      ],
+      "status": "archived",
+      "start": "2020-04",
+      "end": "2020-04",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/DataStructures"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "operating-systems",
+      "symbol": "OS",
+      "name": "Operating Systems / Unix",
+      "summary": "Systems programming coursework in C.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "C",
+        "Unix"
+      ],
+      "status": "archived",
+      "start": "2020-09",
+      "end": "2021-03",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/Operating-Systems"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "store-inventory",
+      "symbol": "INV",
+      "name": "Store Inventory Manager",
+      "summary": "Inventory manager in Python and SQL.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "Python",
+        "SQL"
+      ],
+      "status": "archived",
+      "start": "2019-07",
+      "end": "2019-07",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/Store-Inventory"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "spreadsheet-viewer",
+      "symbol": "SHTV",
+      "name": "Spreadsheet Viewer",
+      "summary": "Google Sheets database search with an interactive front end.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "Python",
+        "Google Sheets"
+      ],
+      "status": "archived",
+      "start": "2019-07",
+      "end": "2019-07",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/spreadsheet_viewer"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "calculator-ios",
+      "symbol": "CALC",
+      "name": "Calculator iOS App",
+      "summary": "First Swift app.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "Swift",
+        "iOS"
+      ],
+      "status": "archived",
+      "start": "2020-04",
+      "end": "2020-04",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/Calculator-iOS-App"
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "daily-coding-problem",
+      "symbol": "DCP",
+      "name": "Daily Coding Problem",
+      "summary": "Solutions to dailycodingproblem.com problems.",
+      "description": "",
+      "category": "Coursework",
+      "stack": [
+        "Python"
+      ],
+      "status": "archived",
+      "start": "2019-03",
+      "end": "2019-03",
+      "conviction": 1,
+      "featured": false,
+      "hidden": false,
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/korivernon/daily-coding-problem"
+        }
+      ],
+      "image": ""
+    }
+  ],
+  "experience": [
+    {
+      "id": "ms-sales-trader",
+      "org": "Morgan Stanley",
+      "orgUrl": "https://www.morganstanley.com",
+      "title": "Electronic Sales Trader, Associate",
+      "team": "Institutional Equities, Electronic Trading (MSET)",
+      "start": "2024-08",
+      "end": null,
+      "hidden": false,
+      "bullets": [
+        "Cover retail aggregators, market makers, exchanges and institutional broker-dealers in US equities and options, representing ~$30B in executed value.",
+        "Lead the product build-out of fractional share trading for broker-dealer clients.",
+        "Advise clients on algo selection and parameter tuning (VWAP, TWAP, POV, smart order routing) and run post-trade TCA reviews to diagnose slippage.",
+        "Built Python tools that automate client TCA reporting, desk workflows and operational tasks."
+      ]
+    },
+    {
+      "id": "ms-data-engineer",
+      "org": "Morgan Stanley",
+      "orgUrl": "https://www.morganstanley.com",
+      "title": "Data Engineer, Associate",
+      "team": "Institutional Securities Technology, Internal Trading & Reporting Applications",
+      "start": "2022-11",
+      "end": "2024-07",
+      "hidden": false,
+      "bullets": [
+        "Built and deployed a seasonal ARIMA model forecasting trade execution volumes, recalculated every 15 minutes and typically within 3–5% of realized volume during core hours.",
+        "Developed a Data Quality Rule Suggestion Engine that profiles datasets and proposes validation rules, enabled across the firm's internal equities trading and reporting platform.",
+        "Built data pipelines and APIs for trading and reporting apps, applying ML to improve data quality."
+      ]
+    },
+    {
+      "id": "ms-amm",
+      "org": "Morgan Stanley",
+      "orgUrl": "https://www.morganstanley.com",
+      "title": "Automated Risk Trading Production Engineer, Analyst",
+      "team": "Reliability & Production Engineering, Automated Market Making (AMM)",
+      "start": "2022-02",
+      "end": "2022-11",
+      "hidden": false,
+      "bullets": [
+        "Production and DevOps support for an AMM business delivering billions of quotes per day across 15 US exchanges, triaging live incidents with traders and developers.",
+        "Built real-time monitoring of key business indicators across the AMM platform.",
+        "Built a report aggregation tool and dashboard to load, query, export and purge production data."
+      ]
+    },
+    {
+      "id": "ms-intern",
+      "org": "Morgan Stanley",
+      "orgUrl": "https://www.morganstanley.com",
+      "title": "Summer Technology Analyst",
+      "team": "Reliability & Production Engineering",
+      "start": "2021-06",
+      "end": "2021-08",
+      "hidden": false,
+      "bullets": [
+        "Built a report aggregation tool in Python/Flask for the team's trading, mobile and end-user platforms."
+      ]
+    },
+    {
+      "id": "ahia",
+      "org": "Ahïa Solutions LLC",
+      "orgUrl": "https://ahiasolutions.com",
+      "title": "Owner",
+      "team": "",
+      "start": "2018-05",
+      "end": null,
+      "hidden": false,
+      "bullets": [
+        "Software, AI automation and digital marketing for small businesses in the NYC metro area.",
+        "Runs a vehicle rental operation on Turo."
+      ]
+    },
+    {
+      "id": "nyu-ta-intro",
+      "org": "NYU Tandon School of Engineering",
+      "orgUrl": "https://engineering.nyu.edu",
+      "title": "Teaching Assistant, Intro to Programming",
+      "team": "",
+      "start": "2019-08",
+      "end": "2022-01",
+      "hidden": false,
+      "bullets": [
+        "Led lab sections, held office hours and wrote Python teaching material for CS-1114."
+      ]
+    },
+    {
+      "id": "nyu-ta-dsa",
+      "org": "NYU Tandon School of Engineering",
+      "orgUrl": "https://engineering.nyu.edu",
+      "title": "Teaching Assistant, Data Structures & Algorithms",
+      "team": "",
+      "start": "2019-06",
+      "end": "2019-08",
+      "hidden": false,
+      "bullets": [
+        "Developed course material, graded exams and assignments, and held office hours."
+      ]
+    },
+    {
+      "id": "ome",
+      "org": "Organization for Melanin Empowerment",
+      "orgUrl": "",
+      "title": "Founder",
+      "team": "",
+      "start": "2017-09",
+      "end": "2018-07",
+      "hidden": false,
+      "bullets": [
+        "Ran free summer tutoring (Pre-Algebra through Calculus, SAT/ACT) and mentorship programs that connected students with professionals."
+      ]
+    },
+    {
+      "id": "miningstore",
+      "org": "Miningstore.com",
+      "orgUrl": "https://miningstore.com",
+      "title": "Technician",
+      "team": "",
+      "start": "2018-01",
+      "end": "2018-05",
+      "hidden": false,
+      "bullets": [
+        "Built 60+ crypto mining rigs and ran inventory at an early-stage startup."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "group": "Trading",
+      "items": [
+        "Market structure",
+        "Options Greeks",
+        "Volatility estimation",
+        "Market making",
+        "VWAP / TWAP / POV",
+        "Smart order routing",
+        "TCA"
+      ]
+    },
+    {
+      "group": "Languages",
+      "items": [
+        "Python",
+        "SQL",
+        "C++",
+        "Java",
+        "kdb+/q",
+        "JavaScript"
+      ]
+    },
+    {
+      "group": "Systems",
+      "items": [
+        "Postgres",
+        "Flask / FastAPI",
+        "Broker & exchange APIs",
+        "LLM agents",
+        "Time-series forecasting",
+        "Linux / launchd"
+      ]
+    }
+  ],
+  "licenses": [
+    {
+      "id": "sie",
+      "code": "SIE",
+      "name": "Securities Industry Essentials",
+      "year": "",
+      "hidden": false
+    },
+    {
+      "id": "series7",
+      "code": "Series 7",
+      "name": "General Securities Representative",
+      "year": "",
+      "hidden": false
+    },
+    {
+      "id": "series57",
+      "code": "Series 57",
+      "name": "Securities Trader Representative",
+      "year": "",
+      "hidden": false
+    },
+    {
+      "id": "series63",
+      "code": "Series 63",
+      "name": "Uniform Securities Agent State Law",
+      "year": "",
+      "hidden": false
+    }
+  ],
+  "education": [
+    {
+      "id": "nyu",
+      "school": "New York University, Tandon School of Engineering",
+      "degree": "B.S. Computer Science, Minor in Mathematics",
+      "start": "2018-08",
+      "end": "2021-12",
+      "hidden": false,
+      "notes": "Initiated into the Upsilon Upsilon Chapter of Alpha Phi Alpha Fraternity, Inc."
+    },
+    {
+      "id": "wymla",
+      "school": "Wake Young Men's Leadership Academy",
+      "degree": "High school diploma, 4th in class",
+      "start": "2014-08",
+      "end": "2018-06",
+      "hidden": false,
+      "notes": "Perfect GPA, with 59 college credits from two years at St. Augustine's University."
+    }
+  ],
+  "interests": [
+    "Powerlifting",
+    "Paintball",
+    "Cars",
+    "Cooking",
+    "Soca",
+    "Mentorship (America Needs You)"
+  ],
+  "beyond": {
+    "hidden": false,
+    "title": "Beyond the desk",
+    "text": "I care a lot about mental health. We lose brilliant people to depression, anxiety and PTSD. My friends and I made this video to honor a brother we lost.",
+    "video": "https://www.youtube-nocookie.com/embed/JpKikN3v6dU"
+  },
+  "quote": {
+    "text": "Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate; only love can do that.",
+    "by": "Martin Luther King Jr."
+  },
+  "archive": [
+    {
+      "label": "Resources",
+      "url": "books.html"
+    },
+    {
+      "label": "Learn Python",
+      "url": "learn_python.html"
+    },
+    {
+      "label": "CS-1114",
+      "url": "cs1114.html"
+    },
+    {
+      "label": "Contact form",
+      "url": "contact_me.html"
+    }
+  ]
+}

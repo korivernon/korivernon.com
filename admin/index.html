@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>KSV Console</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script>
+    try { var t = localStorage.getItem('ksv:theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    window.KSV_BASE = '../';
+  </script>
+</head>
+<body class="admin">
+  <div id="root"><p class="wrap loading mono">&gt; console booting<span class="cursor">▍</span></p></div>
+  <dialog id="modal" class="modal"></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="../assets/js/common.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
