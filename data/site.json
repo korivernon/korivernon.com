@@ -1563,17 +1563,6 @@
         "kdb+/q"
       ],
       "hidden": false
-    },
-    {
-      "group": "Systems",
-      "items": [
-        "Postgres",
-        "Flask / FastAPI",
-        "Broker APIs",
-        "LLM agents",
-        "Linux / launchd"
-      ],
-      "hidden": false
     }
   ],
   "licenses": [
