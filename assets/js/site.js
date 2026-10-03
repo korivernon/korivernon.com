@@ -42,8 +42,8 @@
       (on('showExperience') && exp.length ? section('experience', 'Work Experience', experienceHtml(exp, d.experienceGroups || {})) : '') +
       (showProjects ? section('projects', 'Projects', projectsHtml(projects)) : '') +
       (on('showEducation') ? section('education', 'Education', educationHtml(d, on('showVideo')), d.educationImage) : '') +
-      (on('showVolunteering') && vol.length ? section('volunteering', (d.experienceGroups || {}).volunteer || 'Volunteering & Mentorship', jobs(vol), d.volunteeringImage) : '') +
       (on('showSkills') ? section('skills', 'Skills', skillsHtml(d)) : '') +
+      (on('showVolunteering') && vol.length ? section('volunteering', (d.experienceGroups || {}).volunteer || 'Volunteering & Mentorship', jobs(vol), d.volunteeringImage) : '') +
       footerHtml(d);
 
     if (showProjects) wireProjects();

@@ -6,7 +6,7 @@
   const { esc, safeUrl, isExternal } = K;
   const $ = (s, r) => (r || document).querySelector(s);
 
-  const SECTIONS = [['top', 'About Me'], ['experience', 'Experience'], ['projects', 'Projects'], ['education', 'Education'], ['volunteering', 'Volunteering'], ['skills', 'Skills']];
+  const SECTIONS = [['top', 'About Me'], ['experience', 'Experience'], ['projects', 'Projects'], ['education', 'Education'], ['skills', 'Skills'], ['volunteering', 'Volunteering']];
   const ext = u => (isExternal(u) || /\.pdf$/i.test(u || '') ? ' target="_blank" rel="noopener"' : '');
   const link = (u, label, attrs) => '<a href="' + esc(safeUrl(u)) + '"' + ext(u) + (attrs || '') + '>' + esc(label) + '</a>';
   const here = location.pathname.split('/').pop() || 'index.html';
@@ -21,9 +21,11 @@
         navExtra.map(l => link(l.url, l.label)).join('') +
         (p.resume ? link(p.resume, 'Resumé') : '') +
       '</nav>' +
+      '<div class="nav-tools">' +
       ((d.archive || []).length ? '<div class="more-menu"><button class="more-btn" id="more-btn" type="button" aria-expanded="false" aria-controls="more-panel">More ▾</button>' +
         '<div class="more-panel" id="more-panel" hidden>' + d.archive.map(l => link(l.url, l.label, String(l.url) === here ? ' aria-current="page"' : '')).join('') + '</div></div>' : '') +
       '<button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle light or dark theme">◐</button>' +
+      '</div>' +
     '</div></header>';
   }
 
