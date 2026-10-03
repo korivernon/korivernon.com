@@ -148,8 +148,8 @@
       "id": "equitize",
       "symbol": "EQTZ",
       "name": "Equitize",
-      "summary": "Read-only companion app to PomTrader for sharing a portfolio view safely.",
-      "description": "A slimmer front end on top of PomTrader's data, with a route allowlist, sign-in with username + password + PIN, and per-minute polling only while signed in.",
+      "summary": "Lets users create, manage and share watchlists, and process the news around them.",
+      "description": "",
       "category": "Trading",
       "stack": [
         "Python",
