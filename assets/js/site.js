@@ -42,7 +42,7 @@
       footerHtml(d);
 
     if (showProjects) wireProjects();
-    startTyped(p.taglines || []);
+    startTyped(p.taglines || [], p.typingLoop === true);
     if (state.draft) showDraftBanner();
     if (K.isAdmin()) showEditFab();
     if (location.hash.length > 1) {
@@ -191,20 +191,20 @@
 
   /* ---------------- chrome ---------------- */
   let typedTimer;
-  function startTyped(lines) {
+  function startTyped(lines, loop) {
     clearTimeout(typedTimer);
     const el = $('#typed');
     if (!el || !lines.length) return;
     const last = lines.length - 1;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = lines[last]; return; }
     let i = 0, j = 0, del = false;
-    // Types each line once and stops on the last one.
+    // Types each line once and stops on the last one, unless loop is on.
     (function tick() {
-      const line = lines[i];
+      const line = lines[i % lines.length];
       j += del ? -1 : 1;
       el.textContent = line.slice(0, j);
       let wait = del ? 28 : 55;
-      if (!del && j === line.length) { if (i === last) return; del = true; wait = 1100; }
+      if (!del && j === line.length) { if (!loop && i === last) return; del = true; wait = 1100; }
       else if (del && j === 0) { del = false; i++; wait = 350; }
       typedTimer = setTimeout(tick, wait);
     })();

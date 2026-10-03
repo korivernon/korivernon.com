@@ -133,9 +133,10 @@
       { k: 'hidden', label: 'Hidden from the site', type: 'check' },
     ],
     profile: [
-      { row: [{ k: 'profile.name', label: 'Name' }, { k: 'profile.ticker', label: 'Your ticker', hint: 'shows as $KSV' }] },
-      { k: 'profile.headline', label: 'Headline' },
-      { k: 'profile.taglines', label: 'Typed taglines', type: 'lines', rows: 4, hint: 'one per line, typed out under the headline' },
+      { k: 'profile.taglines', label: 'Typing text (under the logo)', type: 'lines', rows: 5, hint: 'One line per phrase, typed out in order. With “keep cycling” off, it stops on the last line.' },
+      { k: 'profile.typingLoop', label: 'Keep cycling through the lines instead of stopping on the last one', type: 'check' },
+      { row: [{ k: 'profile.name', label: 'Name' }, { k: 'profile.ticker', label: 'Short handle', hint: 'used in the hidden terminal' }] },
+      { k: 'profile.headline', label: 'Headline', hint: 'only shows if “Show my name and headline” is on in Settings' },
       { k: 'profile.bio', label: 'Bio', type: 'textarea', rows: 9, hint: 'Blank line = new paragraph. **bold**, [link](https://…) work.' },
       { row: [{ k: 'profile.location', label: 'Location' }, { k: 'profile.email', label: 'Public email' }] },
       { k: 'profile.resume', label: 'Resume PDF', type: 'file', dir: 'documents', accept: 'application/pdf', keepName: true },
@@ -348,7 +349,7 @@
     if (S.view === 'skills') return renderSkills(v);
     if (S.view === 'raw') return renderRaw(v);
     const hints = {
-      profile: 'Everything in the hero: name, headline, bio, photo, resume and buttons.',
+      profile: 'The top of the page: typing text, photo, buttons, resume and your About Me.',
       extras: 'The Education picture, categories, interests, the “Beyond” section, the footer quote and footer links.',
       settings: 'Turn whole sections on or off, choose the ordering, and set the accent color. Individual projects, jobs and licenses have an On/Off switch in their own tabs.',
     };
