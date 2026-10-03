@@ -1386,7 +1386,7 @@
       "hidden": false,
       "bullets": [
         "Cover retail aggregators, market makers, exchanges and institutional broker-dealers in US equities and options.",
-        "Advise clients on algo selection and parameter tuning (VWAP, TWAP, POV, smart order routing) and run post-trade TCA reviews to diagnose slippage.",
+        "Advise clients on algo selection and parameter tuning and run post-trade TCA reviews to diagnose slippage.",
         "Built Python tools that automate client TCA reporting, desk workflows and operational tasks."
       ]
     },
