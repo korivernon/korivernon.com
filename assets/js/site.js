@@ -26,12 +26,14 @@
     renderMoreMenu(d.archive || []);
 
     const projects = vis(d.projects);
-    const exp = K.sortByDates(vis(d.experience), s.experienceSort);
+    const allExp = K.sortByDates(vis(d.experience), s.experienceSort);
+    const exp = allExp.filter(e => e.kind !== 'volunteer');
+    const vol = allExp.filter(e => e.kind === 'volunteer');
 
     const on = k => s[k] !== false;  // sections default to shown
     const showProjects = on('showProjects') && projects.length;
     $$('.nav-links a[href^="#"]').forEach(a => {
-      const key = { '#projects': 'showProjects', '#experience': 'showExperience', '#education': 'showEducation', '#skills': 'showSkills' }[a.getAttribute('href')];
+      const key = { '#projects': 'showProjects', '#experience': 'showExperience', '#education': 'showEducation', '#skills': 'showSkills', '#volunteering': 'showVolunteering' }[a.getAttribute('href')];
       a.hidden = !!key && !on(key);
     });
 
@@ -40,6 +42,7 @@
       (on('showExperience') && exp.length ? section('experience', 'Work Experience', experienceHtml(exp, d.experienceGroups || {})) : '') +
       (showProjects ? section('projects', 'Projects', projectsHtml(projects)) : '') +
       (on('showEducation') ? section('education', 'Education', educationHtml(d, on('showVideo')), d.educationImage) : '') +
+      (on('showVolunteering') && vol.length ? section('volunteering', (d.experienceGroups || {}).volunteer || 'Volunteering & Mentorship', jobs(vol), d.volunteeringImage) : '') +
       (on('showSkills') ? section('skills', 'Skills', skillsHtml(d)) : '') +
       footerHtml(d);
 
@@ -200,7 +203,7 @@
     return exp.map(e =>
       '<article class="job" data-edit="experience/' + esc(e.id) + '">' + pen('experience/' + e.id) +
         '<h3>' + esc(e.title) + ' @ ' + (e.orgUrl ? link(e.orgUrl, e.org) : esc(e.org)) + '</h3>' +
-        '<p class="when">' + esc(K.fmtRange(e.start, e.end)) + (e.team ? ' · ' + esc(e.team) : '') + '</p>' +
+        ((e.start || e.team) ? '<p class="when">' + [e.start ? K.fmtRange(e.start, e.end) : '', e.team || ''].filter(Boolean).map(esc).join(' · ') + '</p>' : '') +
         ((e.bullets || []).length ? '<ul>' + e.bullets.map(b => '<li>' + inline(b) + '</li>').join('') + '</ul>' : '') +
       '</article>').join('');
   }

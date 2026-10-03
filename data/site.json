@@ -34,7 +34,8 @@
     "showEducation": true,
     "showSkills": true,
     "showVideo": true,
-    "showName": false
+    "showName": false,
+    "showVolunteering": true
   },
   "categories": [
     "Trading",
@@ -1503,6 +1504,34 @@
         "Built 60+ crypto mining rigs and ran inventory at an early-stage startup."
       ],
       "kind": "professional"
+    },
+    {
+      "id": "imentor",
+      "kind": "volunteer",
+      "org": "iMentor",
+      "orgUrl": "https://imentor.org",
+      "title": "Mentor",
+      "team": "",
+      "start": "2024-08",
+      "end": "2026-05",
+      "hidden": false,
+      "bullets": [
+        "Paired one-on-one with a New York City high school student, supporting them through high school, the college process and the path to graduation."
+      ]
+    },
+    {
+      "id": "america-needs-you",
+      "kind": "volunteer",
+      "org": "America Needs You",
+      "orgUrl": "https://americaneedsyou.org",
+      "title": "Mentor",
+      "team": "",
+      "start": "2024-08",
+      "end": null,
+      "hidden": false,
+      "bullets": [
+        "Mentor first-generation college students on career preparation, internships and professional development, helping them build the networks and skills for economic mobility."
+      ]
     }
   ],
   "skills": [
@@ -1586,7 +1615,7 @@
     "Cars",
     "Cooking",
     "Soca",
-    "Mentorship (America Needs You)"
+    "Mentorship"
   ],
   "beyond": {
     "hidden": false,
@@ -1616,9 +1645,11 @@
       "url": "cs1114.html"
     }
   ],
-  "educationImage": "images/education.jpg",
+  "educationImage": "",
   "experienceGroups": {
     "professional": "Professional Experience",
-    "entrepreneurial": "Entrepreneurial Ventures"
-  }
+    "entrepreneurial": "Entrepreneurial Ventures",
+    "volunteer": "Volunteering & Mentorship"
+  },
+  "volunteeringImage": "images/mentee.jpg"
 }

@@ -117,9 +117,9 @@
     ],
     experience: [
       { row: [{ k: 'title', label: 'Title', req: true }, { k: 'org', label: 'Company / org', req: true }] },
-      { k: 'kind', label: 'Subsection', type: 'select', opts: [['professional', 'Professional Experience'], ['entrepreneurial', 'Entrepreneurial Ventures']] },
+      { k: 'kind', label: 'Subsection', type: 'select', opts: [['professional', 'Professional Experience'], ['entrepreneurial', 'Entrepreneurial Ventures'], ['volunteer', 'Volunteering & Mentorship (own section)']] },
       { row: [{ k: 'team', label: 'Team / desk' }, { k: 'orgUrl', label: 'Company URL' }] },
-      { row: [{ k: 'start', label: 'Start', type: 'month' }, { k: 'end', label: 'End', type: 'month', hint: 'blank = present' }] },
+      { row: [{ k: 'start', label: 'Start', type: 'month' }, { k: 'end', label: 'End', type: 'month', hint: 'blank = present (leave both blank to hide dates)' }] },
       { k: 'bullets', label: 'Bullets', type: 'lines', rows: 6, hint: 'one per line' },
       { k: 'hidden', label: 'Hidden from the site', type: 'check' },
     ],
@@ -147,9 +147,11 @@
     ],
     extras: [
       { row: [{ k: 'experienceGroups.professional', label: 'Experience subsection 1 title' }, { k: 'experienceGroups.entrepreneurial', label: 'Experience subsection 2 title' }] },
+      { k: 'experienceGroups.volunteer', label: 'Volunteering section title' },
       { k: 'categories', label: 'Project categories (filter chips, in order)', type: 'list' },
       { k: 'interests', label: 'Interests', type: 'list' },
       { k: 'educationImage', label: 'Picture above Education', type: 'file', dir: 'images', accept: 'image/*', hint: 'leave blank for no picture' },
+      { k: 'volunteeringImage', label: 'Picture above Volunteering & Mentorship', type: 'file', dir: 'images', accept: 'image/*', hint: 'leave blank for no picture' },
       { k: 'beyond.title', label: '“Beyond” section title' },
       { k: 'beyond.text', label: '“Beyond” text', type: 'textarea', rows: 4 },
       { k: 'beyond.video', label: 'Video embed URL', hint: 'YouTube/Vimeo embed link, e.g. https://www.youtube-nocookie.com/embed/ID' },
@@ -161,7 +163,7 @@
       { k: 'settings.showName', label: 'Show my name and headline at the top', type: 'check' },
       { row: [{ k: 'settings.showProjects', label: 'Projects section', type: 'check' }, { k: 'settings.showExperience', label: 'Work Experience section', type: 'check' }] },
       { row: [{ k: 'settings.showEducation', label: 'Education section', type: 'check' }, { k: 'settings.showSkills', label: 'Skills section', type: 'check' }] },
-      { k: 'settings.showVideo', label: 'Mental-health video (in Education)', type: 'check' },
+      { row: [{ k: 'settings.showVolunteering', label: 'Volunteering & Mentorship section', type: 'check' }, { k: 'settings.showVideo', label: 'Mental-health video (in Education)', type: 'check' }] },
       { row: [
         { k: 'settings.projectSort', label: 'Project order', type: 'select', opts: [['auto', 'Auto: featured → live → conviction → recent'], ['manual', 'Manual: the order I set']] },
         { k: 'settings.experienceSort', label: 'Experience order', type: 'select', opts: [['auto', 'Auto: current roles, then newest'], ['manual', 'Manual']] },
@@ -178,8 +180,8 @@
       idFrom: x => slug(x.name),
     },
     experience: {
-      label: 'Experience', sortKey: 'experienceSort', sorter: (l, m) => K.sortByDates(l, m),
-      sym: x => (x.org || '').split(/\s+/).map(w => w[0]).join('').slice(0, 4).toUpperCase(), title: x => x.title + ' · ' + x.org, sub: x => (x.kind === 'entrepreneurial' ? 'Entrepreneurial · ' : '') + K.fmtRange(x.start, x.end) + (x.team ? ' · ' + x.team : ''),
+      label: 'Experience & Volunteering', sortKey: 'experienceSort', sorter: (l, m) => K.sortByDates(l, m),
+      sym: x => (x.org || '').split(/\s+/).map(w => w[0]).join('').slice(0, 4).toUpperCase(), title: x => x.title + ' · ' + x.org, sub: x => ({ entrepreneurial: 'Entrepreneurial · ', volunteer: 'Volunteering · ' }[x.kind] || '') + (x.start ? K.fmtRange(x.start, x.end) : 'no dates') + (x.team ? ' · ' + x.team : ''),
       blank: () => ({ id: '', kind: 'professional', org: '', orgUrl: '', title: '', team: '', start: new Date().toISOString().slice(0, 7), end: null, hidden: false, bullets: [] }),
       idFrom: x => slug(x.org + ' ' + x.title),
     },
@@ -198,7 +200,7 @@
   };
 
   const NAV = [
-    ['profile', 'Profile'], ['projects', 'Projects'], ['experience', 'Experience'], ['licenses', 'Licenses'],
+    ['profile', 'Profile'], ['projects', 'Projects'], ['experience', 'Experience & Volunteering'], ['licenses', 'Licenses'],
     ['education', 'Education'], ['skills', 'Skills'], ['extras', 'Extras'], ['settings', 'Settings'], ['raw', 'Raw JSON'],
   ];
 
@@ -353,7 +355,7 @@
     if (S.view === 'raw') return renderRaw(v);
     const hints = {
       profile: 'The top of the page: typing text, photo, buttons, resume and your About Me.',
-      extras: 'The Education picture, categories, interests, the “Beyond” section, the footer quote and the hidden More menu.',
+      extras: 'Section pictures, categories, interests, the “Beyond” section, the footer quote and the hidden More menu.',
       settings: 'Turn whole sections on or off, choose the ordering, and set the accent color. Individual projects, jobs and licenses have an On/Off switch in their own tabs.',
     };
     v.innerHTML = '<p class="hint">' + (hints[S.view] || '') + '</p><div class="formcard" id="form">' + formHtml(SCHEMA[S.view], S.data) + '</div>';
