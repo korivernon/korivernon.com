@@ -26,15 +26,22 @@
     const projects = vis(d.projects);
     const exp = K.sortByDates(vis(d.experience), s.experienceSort);
 
+    const on = k => s[k] !== false;  // sections default to shown
+    const showProjects = on('showProjects') && projects.length;
+    $$('.nav-links a[href^="#"]').forEach(a => {
+      const key = { '#projects': 'showProjects', '#experience': 'showExperience', '#education': 'showEducation', '#skills': 'showSkills' }[a.getAttribute('href')];
+      a.hidden = !!key && !on(key);
+    });
+
     $('#app').innerHTML =
-      hero(p) +
-      (projects.length ? section('projects', 'Projects', projectsHtml(projects)) : '') +
-      (exp.length ? section('experience', 'Work Experience', experienceHtml(exp)) : '') +
-      section('education', 'Education', educationHtml(d)) +
-      section('skills', 'Skills', skillsHtml(d)) +
+      hero(p, s.showName === true) +
+      (showProjects ? section('projects', 'Projects', projectsHtml(projects)) : '') +
+      (on('showExperience') && exp.length ? section('experience', 'Work Experience', experienceHtml(exp)) : '') +
+      (on('showEducation') ? section('education', 'Education', educationHtml(d, on('showVideo'))) : '') +
+      (on('showSkills') ? section('skills', 'Skills', skillsHtml(d)) : '') +
       footerHtml(d);
 
-    if (projects.length) wireProjects();
+    if (showProjects) wireProjects();
     startTyped(p.taglines || []);
     if (state.draft) showDraftBanner();
     if (K.isAdmin()) showEditFab();
@@ -48,15 +55,15 @@
     return '<section class="block wrap" id="' + id + '"><h2 class="sec-title">' + esc(title) + '</h2><div class="heading-line"></div>' + body + '</section>';
   }
 
-  function hero(p) {
+  function hero(p, showName) {
     const icons = [];
     (p.links || []).forEach(l => icons.push(link(l.url, l.label, 'pill-link')));
     if (p.email) icons.push('<a class="pill-link" href="mailto:' + esc(p.email) + '">Email</a>');
     if (p.resume) icons.push(link(p.resume, 'Resumé', 'pill-link'));
     return '<section class="hero wrap" id="top" data-edit="profile">' + pen('profile') +
       (p.logo ? '<img class="logo" src="' + esc(safeUrl(p.logo)) + '" alt="KSV logo" width="140">' : '') +
-      '<h1 class="name">' + esc(p.name || '') + '</h1>' +
-      (p.headline ? '<p class="headline">' + esc(p.headline) + '</p>' : '') +
+      '<h1 class="name' + (showName ? '' : ' sr-only') + '">' + esc(p.name || '') + '</h1>' +
+      (showName && p.headline ? '<p class="headline">' + esc(p.headline) + '</p>' : '') +
       ((p.taglines || []).length ? '<p class="typed mono" aria-live="off"><span id="typed"></span><span class="cursor">▍</span></p>' : '') +
       (p.photo ? '<img class="photo" src="' + esc(safeUrl(p.photo)) + '" alt="Kori Vernon" width="260" height="260">' : '') +
       '<div class="hero-links">' + icons.join('') + '</div>' +
@@ -141,10 +148,10 @@
       '</article>').join('');
   }
 
-  function educationHtml(d) {
+  function educationHtml(d, showVideo) {
     const edu = K.sortByDates(vis(d.education), 'auto');
     const b = d.beyond || {};
-    const vid = !b.hidden && b.video && /^https:\/\/(www\.)?(youtube(-nocookie)?\.com|player\.vimeo\.com)\//.test(b.video) ? b.video : '';
+    const vid = !b.hidden && showVideo && b.video && /^https:\/\/(www\.)?(youtube(-nocookie)?\.com|player\.vimeo\.com)\//.test(b.video) ? b.video : '';
     return edu.map(e => '<div class="edu" data-edit="education/' + esc(e.id) + '">' + pen('education/' + e.id) +
         '<h3>' + esc(e.school) + '</h3><p class="when">' + esc(e.degree) + ' · ' + esc(K.fmtRange(e.start, e.end)) + '</p>' +
         (e.notes ? '<p>' + inline(e.notes) + '</p>' : '') + '</div>').join('') +
@@ -153,7 +160,7 @@
   }
 
   function skillsHtml(d) {
-    const groups = d.skills || [];
+    const groups = vis(d.skills);
     const host = groups.findIndex(g => /language/i.test(g.group || ''));
     const licHtml = lic(d).length ? '<div class="skill-group" data-edit="licenses">' + pen('licenses') + '<h3>Licenses</h3><div class="pills">' +
       lic(d).map(l => '<span class="pill" title="' + esc(l.name + (l.year ? ' · ' + l.year : '')) + '">' + esc(l.code) + '</span>').join('') + '</div></div>' : '';

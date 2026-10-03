@@ -4,10 +4,10 @@
     "ticker": "KSV",
     "headline": "Electronic Sales Trader @ Morgan Stanley",
     "taglines": [
-      "builds trading systems.",
-      "quotes two-sided markets.",
-      "ships AI agents that do real work.",
-      "automates the boring parts."
+      "developer.",
+      "dreamer.",
+      "doer.",
+      "kori vernon."
     ],
     "bio": "I am a forward-thinking, hardworking, outgoing person, always looking to help out anyone in any way. I am a graduate of New York University Tandon School of Engineering with a B.S. in Computer Science and a minor in Mathematics. Currently, I am an Electronic Trader at Morgan Stanley.\n\nI have dreams to stratify the problems of the world and solve them through the power of Statistics, Data Science, Artificial Intelligence, and Kindness :). My goal is to find creative and innovative solutions to ongoing problems so I can help as many people as possible.\n\nOutside of my passion for the markets, I enjoy Mentorship, Cars, Eating, Cooking, and Powerlifting. Originally born and raised in Raleigh, North Carolina - currently in NYC.",
     "location": "New York, NY",
@@ -32,7 +32,13 @@
   },
   "settings": {
     "projectSort": "auto",
-    "experienceSort": "auto"
+    "experienceSort": "auto",
+    "showProjects": true,
+    "showExperience": true,
+    "showEducation": true,
+    "showSkills": true,
+    "showVideo": true,
+    "showName": false
   },
   "categories": [
     "Trading",
@@ -99,7 +105,7 @@
       "stack": [
         "Python",
         "Postgres",
-        "Black-Scholes",
+        "Volatility pricing",
         "Scheduling"
       ],
       "status": "live",
@@ -129,8 +135,8 @@
       "start": "2026-09",
       "end": null,
       "conviction": 4,
-      "featured": true,
-      "hidden": false,
+      "featured": false,
+      "hidden": true,
       "links": [],
       "image": ""
     },
@@ -172,7 +178,7 @@
       "start": "2026-08",
       "end": null,
       "conviction": 4,
-      "featured": false,
+      "featured": true,
       "hidden": false,
       "links": [
         {
@@ -588,7 +594,7 @@
       "end": "2024-07",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [],
       "image": ""
     },
@@ -806,7 +812,7 @@
       "end": null,
       "conviction": 3,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "Site",
@@ -1006,7 +1012,7 @@
       "end": null,
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1445,18 +1451,6 @@
   ],
   "skills": [
     {
-      "group": "Trading",
-      "items": [
-        "Market structure",
-        "Options Greeks",
-        "Volatility estimation",
-        "Market making",
-        "VWAP / TWAP / POV",
-        "Smart order routing",
-        "TCA"
-      ]
-    },
-    {
       "group": "Languages",
       "items": [
         "Python",
@@ -1465,7 +1459,8 @@
         "Java",
         "kdb+/q",
         "JavaScript"
-      ]
+      ],
+      "hidden": false
     },
     {
       "group": "Systems",
@@ -1474,9 +1469,9 @@
         "Flask / FastAPI",
         "Broker & exchange APIs",
         "LLM agents",
-        "Time-series forecasting",
         "Linux / launchd"
-      ]
+      ],
+      "hidden": false
     }
   ],
   "licenses": [
@@ -1517,7 +1512,7 @@
       "start": "2018-08",
       "end": "2021-12",
       "hidden": false,
-      "notes": "Initiated into the Upsilon Upsilon Chapter of Alpha Phi Alpha Fraternity, Inc."
+      "notes": "Initiated into the Upsilon Upsilon Chapter of Alpha Phi Alpha Fraternity, Inc. Member of the National Society of Black Engineers (NSBE) at NYU."
     },
     {
       "id": "wymla",

@@ -153,6 +153,10 @@
       { k: 'archive', label: 'Footer links (old pages etc.)', type: 'links' },
     ],
     settings: [
+      { k: 'settings.showName', label: 'Show my name and headline at the top', type: 'check' },
+      { row: [{ k: 'settings.showProjects', label: 'Projects section', type: 'check' }, { k: 'settings.showExperience', label: 'Work Experience section', type: 'check' }] },
+      { row: [{ k: 'settings.showEducation', label: 'Education section', type: 'check' }, { k: 'settings.showSkills', label: 'Skills section', type: 'check' }] },
+      { k: 'settings.showVideo', label: 'Mental-health video (in Education)', type: 'check' },
       { row: [
         { k: 'settings.projectSort', label: 'Project order', type: 'select', opts: [['auto', 'Auto: featured → live → conviction → recent'], ['manual', 'Manual: the order I set']] },
         { k: 'settings.experienceSort', label: 'Experience order', type: 'select', opts: [['auto', 'Auto: current roles, then newest'], ['manual', 'Manual']] },
@@ -206,7 +210,7 @@
       case 'list': return '<label class="field">' + lab + '<input type="text"' + a + ' value="' + esc((v || []).join(', ')) + '">' + hint + '</label>';
       case 'month': return '<label class="field">' + lab + '<input type="month"' + a + ' value="' + esc(v || '') + '">' + hint + '</label>';
       case 'color': return '<label class="field">' + lab + '<input type="color"' + a + ' value="' + esc(v || '#0bb5c9') + '">' + hint + '</label>';
-      case 'check': return '<label class="check"><input type="checkbox"' + a + (v === true || (v !== false && f.k.startsWith('settings.show')) ? ' checked' : '') + '>' + esc(f.label) + '</label>';
+      case 'check': return '<label class="check"><input type="checkbox"' + a + (v === true || (v !== false && f.k.startsWith('settings.show') && f.k !== 'settings.showName') ? ' checked' : '') + '>' + esc(f.label) + '</label>';
       case 'range': return '<label class="field">' + lab + '<input type="range" min="1" max="5" step="1"' + a + ' value="' + esc(v || 3) + '"><small class="mono" data-range-out="' + id + '">' + '●'.repeat(Number(v) || 3) + '</small>' + hint + '</label>';
       case 'select': return '<label class="field">' + lab + '<select' + a + '>' + f.opts.map(o => '<option value="' + esc(o[0]) + '"' + ((v || f.opts[0][0]) === o[0] ? ' selected' : '') + '>' + esc(o[1]) + '</option>').join('') + '</select>' + hint + '</label>';
       case 'category': return '<label class="field">' + lab + '<input type="text" list="cat-list"' + a + ' value="' + esc(v || '') + '"><datalist id="cat-list">' + (S.data.categories || []).map(c => '<option value="' + esc(c) + '">').join('') + '</datalist><small>pick one or type a new category</small></label>';
@@ -345,7 +349,7 @@
     const hints = {
       profile: 'Everything in the hero: name, headline, bio, photo, resume and buttons.',
       extras: 'Categories, interests, the “Beyond” section, the footer quote and footer links.',
-      settings: 'Ordering and accent color.',
+      settings: 'Turn whole sections on or off, choose the ordering, and set the accent color. Individual projects, jobs and licenses have an On/Off switch in their own tabs.',
     };
     v.innerHTML = '<p class="hint">' + (hints[S.view] || '') + '</p><div class="formcard" id="form">' + formHtml(SCHEMA[S.view], S.data) + '</div>';
     bindForm($('#form'), S.data, () => { changed(); }, () => renderView());
@@ -377,7 +381,7 @@
           '<span class="acts">' +
             (manual ? '<button class="ib" title="Move up" data-act="up"' + (i === 0 || q ? ' disabled' : '') + '>↑</button><button class="ib" title="Move down" data-act="down"' + (i === list.length - 1 || q ? ' disabled' : '') + '>↓</button>' : '') +
             (C.feature ? '<button class="ib' + (x.featured ? ' on' : '') + '" title="' + (x.featured ? 'Unfeature' : 'Feature as a card') + '" data-act="feature">' + (x.featured ? '★' : '☆') + '</button>' : '') +
-            '<button class="ib" title="' + (x.hidden ? 'Show on site' : 'Hide from site') + '" data-act="hide">' + (x.hidden ? '◌' : '◉') + '</button>' +
+            '<button class="switch" type="button" role="switch" aria-checked="' + !x.hidden + '" title="' + (x.hidden ? 'Hidden. Click to show on the site' : 'Shown. Click to hide from the site') + '" data-act="hide"><span class="knob"></span><span class="lbl">' + (x.hidden ? 'Off' : 'On') + '</span></button>' +
             '<button class="ib" title="Edit" data-act="edit">✎</button>' +
             '<button class="ib" title="Duplicate" data-act="dup">⧉</button>' +
             '<button class="ib danger" title="Delete" data-act="del">🗑</button>' +
@@ -454,7 +458,7 @@
       groups.map((g, i) => '<div class="formcard" data-g="' + i + '"><div class="row2">' +
         '<label class="field"><span>Group</span><input data-gk="group" value="' + esc(g.group) + '"></label>' +
         '<label class="field"><span>Items</span><input data-gk="items" value="' + esc((g.items || []).join(', ')) + '"></label></div>' +
-        '<div style="display:flex;gap:6px"><button class="btn sm" type="button" data-gm="-1"' + (i ? '' : ' disabled') + '>↑</button><button class="btn sm" type="button" data-gm="1"' + (i < groups.length - 1 ? '' : ' disabled') + '>↓</button>' +
+        '<div style="display:flex;gap:6px;align-items:center"><button class="switch" type="button" role="switch" aria-checked="' + !g.hidden + '" data-gtoggle><span class="knob"></span><span class="lbl">' + (g.hidden ? 'Off' : 'On') + '</span></button><button class="btn sm" type="button" data-gm="-1"' + (i ? '' : ' disabled') + '>↑</button><button class="btn sm" type="button" data-gm="1"' + (i < groups.length - 1 ? '' : ' disabled') + '>↓</button>' +
         '<button class="btn sm danger" type="button" data-gdel style="margin-left:auto">Remove group</button></div></div>').join('') +
       '<button class="btn sm primary" type="button" id="addg">+ Add group</button>';
     v.oninput = e => {
@@ -466,7 +470,8 @@
     };
     v.onclick = e => {
       const card = e.target.closest('[data-g]');
-      if (e.target.id === 'addg') { groups.push({ group: 'New group', items: [] }); }
+      if (e.target.id === 'addg') { groups.push({ group: 'New group', items: [], hidden: false }); }
+      else if (card && e.target.closest('[data-gtoggle]')) { const g = groups[Number(card.dataset.g)]; g.hidden = !g.hidden; }
       else if (card && e.target.dataset.gdel !== undefined) { if (!confirm('Remove this group?')) return; groups.splice(Number(card.dataset.g), 1); }
       else if (card && e.target.dataset.gm) { const i = Number(card.dataset.g), j = i + Number(e.target.dataset.gm); groups.splice(j, 0, groups.splice(i, 1)[0]); }
       else return;
