@@ -59,8 +59,8 @@
 
   function section(id, title, body, image) {
     return '<section class="block wrap" id="' + id + '">' +
-      (image ? '<img class="sec-img" src="' + esc(safeUrl(image)) + '" alt="">' : '') +
-      '<h2 class="sec-title">' + esc(title) + '</h2><div class="heading-line"></div>' + body + '</section>';
+      '<h2 class="sec-title">' + esc(title) + '</h2><div class="heading-line"></div>' +
+      (image ? '<img class="sec-img" src="' + esc(safeUrl(image)) + '" alt="">' : '') + body + '</section>';
   }
 
   // Links with a known icon show under the photo; every other link goes in the top navigation.
