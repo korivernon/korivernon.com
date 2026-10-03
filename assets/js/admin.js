@@ -157,8 +157,7 @@
         { k: 'settings.projectSort', label: 'Project order', type: 'select', opts: [['auto', 'Auto: featured → live → conviction → recent'], ['manual', 'Manual: the order I set']] },
         { k: 'settings.experienceSort', label: 'Experience order', type: 'select', opts: [['auto', 'Auto: current roles, then newest'], ['manual', 'Manual']] },
       ] },
-      { row: [{ k: 'settings.showTicker', label: 'Show ticker tape', type: 'check' }, { k: 'settings.showMarketClock', label: 'Show NYSE clock', type: 'check' }] },
-      { k: 'settings.accent', label: 'Accent color (dark theme)', type: 'color' },
+      { k: 'settings.accent', label: 'Accent color', type: 'color' },
     ],
   };
 
@@ -206,7 +205,7 @@
       case 'lines': return '<label class="field">' + lab + '<textarea' + a + ' rows="' + (f.rows || 4) + '">' + esc((v || []).join('\n')) + '</textarea>' + hint + '</label>';
       case 'list': return '<label class="field">' + lab + '<input type="text"' + a + ' value="' + esc((v || []).join(', ')) + '">' + hint + '</label>';
       case 'month': return '<label class="field">' + lab + '<input type="month"' + a + ' value="' + esc(v || '') + '">' + hint + '</label>';
-      case 'color': return '<label class="field">' + lab + '<input type="color"' + a + ' value="' + esc(v || '#00d084') + '">' + hint + '</label>';
+      case 'color': return '<label class="field">' + lab + '<input type="color"' + a + ' value="' + esc(v || '#0bb5c9') + '">' + hint + '</label>';
       case 'check': return '<label class="check"><input type="checkbox"' + a + (v === true || (v !== false && f.k.startsWith('settings.show')) ? ' checked' : '') + '>' + esc(f.label) + '</label>';
       case 'range': return '<label class="field">' + lab + '<input type="range" min="1" max="5" step="1"' + a + ' value="' + esc(v || 3) + '"><small class="mono" data-range-out="' + id + '">' + '●'.repeat(Number(v) || 3) + '</small>' + hint + '</label>';
       case 'select': return '<label class="field">' + lab + '<select' + a + '>' + f.opts.map(o => '<option value="' + esc(o[0]) + '"' + ((v || f.opts[0][0]) === o[0] ? ' selected' : '') + '>' + esc(o[1]) + '</option>').join('') + '</select>' + hint + '</label>';
@@ -346,7 +345,7 @@
     const hints = {
       profile: 'Everything in the hero: name, headline, bio, photo, resume and buttons.',
       extras: 'Categories, interests, the “Beyond” section, the footer quote and footer links.',
-      settings: 'Ordering and page chrome.',
+      settings: 'Ordering and accent color.',
     };
     v.innerHTML = '<p class="hint">' + (hints[S.view] || '') + '</p><div class="formcard" id="form">' + formHtml(SCHEMA[S.view], S.data) + '</div>';
     bindForm($('#form'), S.data, () => { changed(); }, () => renderView());

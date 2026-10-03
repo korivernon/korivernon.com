@@ -32,10 +32,7 @@
   },
   "settings": {
     "projectSort": "auto",
-    "experienceSort": "auto",
-    "showTicker": true,
-    "showMarketClock": true,
-    "accent": "#00d084"
+    "experienceSort": "auto"
   },
   "categories": [
     "Trading",

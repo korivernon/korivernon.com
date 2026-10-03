@@ -1,6 +1,6 @@
 body.admin { background-image: none; }
 .gate { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; }
-.gate-box { width: min(520px, 100%); background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 26px; box-shadow: var(--glow); }
+.gate-box { width: min(520px, 100%); background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 26px; box-shadow: 0 20px 60px -30px rgba(0,0,0,.4); }
 .gate-box h1 { margin: 0 0 4px; font: 800 22px var(--mono); }
 .gate-box p { color: var(--muted); font-size: 14px; }
 .gate-box ol { color: var(--muted); font-size: 13.5px; padding-left: 18px; }
@@ -97,3 +97,8 @@ body.admin { background-image: none; }
   .item { grid-template-columns: 50px minmax(0, 1fr); }
   .item .acts { grid-column: 1 / -1; justify-content: flex-end; }
 }
+.brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 800 17px var(--mono); }
+.brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.sm { border-radius: 8px; }
+.input { height: 32px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--panel); color: var(--text); padding: 0 10px; font: 13px var(--mono); }

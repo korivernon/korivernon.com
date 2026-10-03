@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kori S. Vernon · $KSV</title>
-  <meta name="description" content="Kori S. Vernon: Electronic Sales Trader at Morgan Stanley who builds trading systems, market makers and AI tools. NYU Tandon CS.">
-  <meta name="theme-color" content="#07090c">
+  <title>Kori S. Vernon</title>
+  <meta name="description" content="Kori S. Vernon: Electronic Trader at Morgan Stanley and NYU Tandon Computer Science graduate who builds trading systems and tools.">
   <link rel="canonical" href="https://korivernon.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://korivernon.com/">
-  <meta property="og:title" content="Kori S. Vernon · $KSV">
-  <meta property="og:description" content="Electronic trading by day. Trading systems, market makers and AI tools by night.">
+  <meta property="og:title" content="Kori S. Vernon">
+  <meta property="og:description" content="Electronic Trader at Morgan Stanley. NYU Tandon CS. Builder of trading systems and tools.">
   <meta property="og:image" content="https://korivernon.com/images/korivernon.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -28,40 +27,36 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <div class="tape" id="tape" aria-hidden="true"><div class="tape-track" id="tape-track"></div></div>
+  <div class="tape" id="tape" aria-hidden="true" hidden><div class="tape-track" id="tape-track"></div></div>
 
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Home"><span class="brand-sym">$KSV</span><span class="brand-dot"></span></a>
       <nav class="nav-links" aria-label="Sections">
+        <a href="#top">About Me</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#skills">Skills</a>
-        <a href="#about">About</a>
-        <a href="documents/Kori_Vernon_CV.pdf" id="nav-resume" target="_blank" rel="noopener">Resume</a>
+        <a href="documents/Kori_Vernon_CV.pdf" id="nav-resume" target="_blank" rel="noopener">Resumé</a>
       </nav>
-      <div class="nav-tools">
-        <span class="clock mono" id="clock" title="NYSE session, Eastern Time"></span>
-        <button class="kbd-btn mono" id="open-cmd" aria-label="Open command palette">⌘K</button>
-        <button class="icon-btn" id="theme-btn" aria-label="Toggle light or dark theme">◐</button>
-      </div>
+      <button class="icon-btn" id="theme-btn" aria-label="Toggle light or dark theme">◐</button>
     </div>
   </header>
 
   <main id="main">
-    <div id="app"><p class="wrap loading mono">&gt; loading $KSV<span class="cursor">▍</span></p></div>
+    <div id="app"><p class="wrap loading mono">loading…</p></div>
     <noscript>
       <div class="wrap">
         <h1>Kori S. Vernon</h1>
-        <p>Electronic Sales Trader at Morgan Stanley. I build trading systems, market makers and AI tools.</p>
-        <p><a href="documents/Kori_Vernon_CV.pdf">Resume</a> · <a href="https://github.com/korivernon">GitHub</a> · <a href="https://linkedin.com/in/korivernon">LinkedIn</a> · <a href="mailto:me@korivernon.com">me@korivernon.com</a></p>
+        <p>Electronic Trader at Morgan Stanley. NYU Tandon B.S. Computer Science, minor in Mathematics.</p>
+        <p><a href="documents/Kori_Vernon_CV.pdf">Resumé</a> · <a href="https://github.com/korivernon">GitHub</a> · <a href="https://linkedin.com/in/korivernon">LinkedIn</a> · <a href="mailto:me@korivernon.com">me@korivernon.com</a></p>
       </div>
     </noscript>
   </main>
 
   <div class="cmd" id="cmd" hidden>
     <div class="cmd-panel" role="dialog" aria-modal="true" aria-label="Command palette">
-      <div class="cmd-input-row"><span class="mono prompt">ksv:~$</span><input id="cmd-input" class="mono" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type a ticker or a command (help)"></div>
+      <div class="cmd-input-row"><span class="mono prompt">ksv:~$</span><input id="cmd-input" class="mono" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type a command (help)"></div>
       <div class="cmd-out mono" id="cmd-out"></div>
     </div>
   </div>
