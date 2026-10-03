@@ -649,6 +649,8 @@
         S.data = await res.json();
       }
     } catch (err) {
+      // Only a rejected token (401) is thrown away; network blips and GitHub hiccups keep it and offer a retry.
+      if (mode === 'github' && err.status !== 401) return loadFailed(err);
       if (mode === 'github') forget();
       return gate(mode === 'github' ? 'GitHub said: ' + err.message + (err.status === 401 ? ' (bad or expired token)' : err.status === 404 ? ' (token cannot see ' + S.repo + ', or the branch/file does not exist)' : '') : err.message);
     }
@@ -658,6 +660,15 @@
     renderShell();
     window.addEventListener('hashchange', go);
     go();
+  }
+
+  function loadFailed(err) {
+    $('#root').innerHTML = '<div class="gate"><div class="gate-box"><h1>$KSV console</h1>' +
+      '<p>Could not reach GitHub just now (' + esc(err.message || 'network error') + '). Your saved token is still here.</p>' +
+      '<button class="btn primary" type="button" id="retry" style="width:100%;justify-content:center">Retry</button>' +
+      '<div class="or">or</div><button class="btn" type="button" id="newtok" style="width:100%;justify-content:center">Use a different token</button></div></div>';
+    $('#retry').onclick = () => start('github');
+    $('#newtok').onclick = () => { forget(); gate(); };
   }
 
   function gate(error) {
