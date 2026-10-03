@@ -548,7 +548,7 @@
       "end": "2023-10",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [],
       "image": ""
     },
@@ -614,7 +614,7 @@
       "end": "2023-07",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -737,7 +737,7 @@
       "end": "2023-01",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
