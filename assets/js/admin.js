@@ -145,6 +145,7 @@
     extras: [
       { k: 'categories', label: 'Project categories (filter chips, in order)', type: 'list' },
       { k: 'interests', label: 'Interests', type: 'list' },
+      { k: 'educationImage', label: 'Picture above Education', type: 'file', dir: 'images', accept: 'image/*', hint: 'leave blank for no picture' },
       { k: 'beyond.title', label: '“Beyond” section title' },
       { k: 'beyond.text', label: '“Beyond” text', type: 'textarea', rows: 4 },
       { k: 'beyond.video', label: 'Video embed URL', hint: 'YouTube/Vimeo embed link, e.g. https://www.youtube-nocookie.com/embed/ID' },
@@ -348,7 +349,7 @@
     if (S.view === 'raw') return renderRaw(v);
     const hints = {
       profile: 'Everything in the hero: name, headline, bio, photo, resume and buttons.',
-      extras: 'Categories, interests, the “Beyond” section, the footer quote and footer links.',
+      extras: 'The Education picture, categories, interests, the “Beyond” section, the footer quote and footer links.',
       settings: 'Turn whole sections on or off, choose the ordering, and set the accent color. Individual projects, jobs and licenses have an On/Off switch in their own tabs.',
     };
     v.innerHTML = '<p class="hint">' + (hints[S.view] || '') + '</p><div class="formcard" id="form">' + formHtml(SCHEMA[S.view], S.data) + '</div>';

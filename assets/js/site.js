@@ -37,7 +37,7 @@
       hero(p, s.showName === true) +
       (showProjects ? section('projects', 'Projects', projectsHtml(projects)) : '') +
       (on('showExperience') && exp.length ? section('experience', 'Work Experience', experienceHtml(exp)) : '') +
-      (on('showEducation') ? section('education', 'Education', educationHtml(d, on('showVideo'))) : '') +
+      (on('showEducation') ? section('education', 'Education', educationHtml(d, on('showVideo')), d.educationImage) : '') +
       (on('showSkills') ? section('skills', 'Skills', skillsHtml(d)) : '') +
       footerHtml(d);
 
@@ -51,8 +51,10 @@
     }
   }
 
-  function section(id, title, body) {
-    return '<section class="block wrap" id="' + id + '"><h2 class="sec-title">' + esc(title) + '</h2><div class="heading-line"></div>' + body + '</section>';
+  function section(id, title, body, image) {
+    return '<section class="block wrap" id="' + id + '">' +
+      (image ? '<img class="sec-img" src="' + esc(safeUrl(image)) + '" alt="">' : '') +
+      '<h2 class="sec-title">' + esc(title) + '</h2><div class="heading-line"></div>' + body + '</section>';
   }
 
   function hero(p, showName) {
