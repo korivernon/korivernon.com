@@ -64,7 +64,7 @@
     const html = items.map(x => {
       const t = STATUS_TAPE[x.status] || ['', ''];
       return '<a href="#p-' + esc(x.id) + '" data-goto="' + esc(x.id) + '"><span class="sym">' + esc(x.symbol) + '</span><span class="chg ' + t[1] + '">' + t[0] + '</span></a>';
-    }).join('') + lic(d).map(l => '<span><span class="sym">' + esc(l.code) + '</span> <span class="chg up">✓ PASSED</span></span>').join('');
+    }).join('');
     $('#tape-track').innerHTML = html + html;
     $$('#tape-track [data-goto]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); gotoProject(a.dataset.goto); }));
   }
@@ -77,21 +77,19 @@
       [years + 'y', 'Building'],
       [projects.filter(x => x.status === 'live').length, 'Live systems'],
       [projects.length, 'Projects'],
-      [lic(d).length, 'FINRA exams'],
+      [projects.filter(x => x.status === 'shipped').length, 'Shipped'],
     ];
     const rows = [
       ['ROLE', current.title || p.headline || ''],
       ['DESK', current.team ? current.team.replace(/^.*\(([^)]+)\).*$/, '$1') : (current.org || '')],
       ['FIRM', current.org || ''],
       ['LOC', p.location || ''],
-      ['LIC', lic(d).map(l => l.code.replace('Series ', 'S')).join(' · ')],
     ].filter(r => r[1]);
     return '<section class="hero wrap" id="top">' +
       '<div data-edit="profile">' + pen('profile') +
         '<p class="prompt-line mono"><span class="p">ksv@nyc</span>:~$ whoami</p>' +
         '<h1>' + esc(p.name || '') + '<span class="tick">$' + esc(p.ticker || 'KSV') + '</span></h1>' +
         '<p class="headline">' + esc(p.headline || '') + '</p>' +
-        (lic(d).length ? '<div class="exams" aria-label="FINRA licenses">' + lic(d).map(l => '<span class="exam" title="' + esc(l.name + (l.year ? ' · passed ' + l.year : '')) + '"><b>' + esc(l.code) + '</b>' + (l.name ? '<span>' + esc(l.name) + '</span>' : '') + '</span>').join('') + '</div>' : '') +
         '<p class="typed" aria-live="off"><span id="typed"></span><span class="cursor">▍</span></p>' +
         '<div class="bio">' + md(p.bio) + '</div>' +
         '<div class="cta">' +
@@ -252,12 +250,16 @@
 
   function skillsHtml(d) {
     const edu = K.sortByDates(vis(d.education), 'auto');
+    const groups = d.skills || [];
+    // Licenses sit under the Languages group (or get their own panel if there isn't one).
+    const host = groups.findIndex(g => /language/i.test(g.group || ''));
+    const licHtml = lic(d).length ? '<div data-edit="licenses">' + pen('licenses') + '<h3 style="margin-top:18px">Licenses</h3><div class="lics">' +
+      lic(d).map(l => '<div class="lic-row"><span class="pill lic">' + esc(l.code) + '</span><span>' + esc(l.name) + (l.year ? ' <em class="mono">' + esc(l.year) + '</em>' : '') + '</span></div>').join('') + '</div></div>' : '';
     return '<div class="grid3">' +
-      (d.skills || []).map((g, i) => '<div class="panel" data-edit="skills/' + i + '">' + pen('skills') + '<h3>' + esc(g.group) + '</h3><div class="pills">' +
-        (g.items || []).map(s => '<span class="pill">' + esc(s) + '</span>').join('') + '</div></div>').join('') +
-      '<div class="panel" data-edit="licenses">' + pen('licenses') + '<h3>Licenses</h3><div class="lics">' + lic(d).map(l => '<div class="lic-row"><span class="pill lic">' + esc(l.code) + '</span><span>' + esc(l.name) + (l.year ? ' <em class="mono">' + esc(l.year) + '</em>' : '') + '</span></div>').join('') + '</div>' +
-        ((d.interests || []).length ? '<h3 style="margin-top:18px">Interests</h3><div class="pills">' + d.interests.map(s => '<span class="pill">' + esc(s) + '</span>').join('') + '</div>' : '') +
-      '</div>' +
+      groups.map((g, i) => '<div class="panel" data-edit="skills/' + i + '">' + pen('skills') + '<h3>' + esc(g.group) + '</h3><div class="pills">' +
+        (g.items || []).map(s => '<span class="pill">' + esc(s) + '</span>').join('') + '</div>' + (i === host ? licHtml : '') + '</div>').join('') +
+      (host < 0 && licHtml ? '<div class="panel">' + licHtml + '</div>' : '') +
+      ((d.interests || []).length ? '<div class="panel" data-edit="extras">' + pen('extras') + '<h3>Interests</h3><div class="pills">' + d.interests.map(s => '<span class="pill">' + esc(s) + '</span>').join('') + '</div></div>' : '') +
       '<div class="panel" data-edit="education" style="grid-column: span 2">' + pen('education') + '<h3>Education</h3>' +
         edu.map(e => '<div class="edu"><b>' + esc(e.school) + '</b><span>' + esc(e.degree) + '</span> <span class="when">' + esc(K.fmtRange(e.start, e.end)) + '</span>' +
           (e.notes ? '<div><span>' + inline(e.notes) + '</span></div>' : '') + '</div>').join('') +
