@@ -23,10 +23,6 @@
       {
         "label": "LinkedIn",
         "url": "https://linkedin.com/in/korivernon"
-      },
-      {
-        "label": "Ahïa Solutions",
-        "url": "https://ahiasolutions.com"
       }
     ]
   },
@@ -1594,6 +1590,10 @@
     "by": "Martin Luther King Jr."
   },
   "archive": [
+    {
+      "label": "Ahïa Solutions",
+      "url": "https://ahiasolutions.com"
+    },
     {
       "label": "Resources",
       "url": "books.html"
