@@ -209,3 +209,42 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); padding: 40px 0 48
   .cursor { animation: none; }
 }
 .more-panel[hidden], .more-menu[hidden] { display: none; }
+
+/* ---------- secondary pages (food, resources, learn python…) ---------- */
+.nav-home { margin-right: auto; display: inline-flex; flex-shrink: 0; }
+.nav-home img { width: 44px; height: auto; }
+.page { padding-block: 40px 0; }
+.page-head { text-align: center; margin-bottom: 8px; }
+.page-head .sec-title { font-size: clamp(28px, 5vw, 38px); }
+.lede { color: var(--muted); font-size: 17px; max-width: 62ch; margin: 0 auto 28px; text-align: center; text-wrap: balance; }
+.page h2 { font-size: 22px; letter-spacing: -.01em; margin: 40px 0 6px; text-wrap: balance; }
+.page h2 + .heading-line { margin: 0 0 18px; width: 40px; }
+.page h3 { font-size: 17px; margin: 22px 0 6px; }
+.page p, .page li { color: var(--muted); }
+.page a { color: var(--accent); }
+
+.link-cards { display: grid; gap: 12px; }
+.lcard { display: block; position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; text-decoration: none; transition: border-color .15s, transform .15s; }
+.lcard:hover { border-color: var(--accent); transform: translateY(-1px); }
+.lcard h3 { margin: 0 0 4px; font-size: 17px; color: var(--text); }
+.lcard h3::after { content: " ↗"; color: var(--accent); font-weight: 500; }
+.lcard[href$=".html"] h3::after, .lcard[href^="#"] h3::after { content: " →"; }
+.lcard p { margin: 0; font-size: 15px; color: var(--muted); }
+.lcard .meta { display: block; margin-top: 6px; font: 12px var(--mono); color: var(--faint); }
+.link-cards.cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.prose { max-width: 70ch; margin: 0 auto; }
+.prose ul, .prose ol { padding-left: 20px; }
+.prose li { margin: 4px 0; }
+.prose pre { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13.5px/1.6 var(--mono); color: var(--text); }
+.prose pre code { background: none; border: 0; padding: 0; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; margin: 12px 0 20px; }
+.page table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.page th, .page td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.page th { font: 600 12px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--faint); background: var(--panel-2); }
+.page tr:last-child td { border-bottom: 0; }
+.page figure { margin: 20px auto; text-align: center; }
+.page figure img { margin: 0 auto; border-radius: var(--radius); }
+.page figcaption { color: var(--faint); font-size: 13px; margin-top: 6px; }
+.more-panel a[aria-current="page"] { color: var(--accent); }
+@media (max-width: 680px) { .link-cards.cols { grid-template-columns: 1fr; } }

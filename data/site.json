@@ -9,7 +9,7 @@
       "doer.",
       "kori s. vernon."
     ],
-    "bio": "I am a forward-thinking, hardworking, outgoing person, always looking to help out anyone in any way. I am a graduate of New York University Tandon School of Engineering with a B.S. in Computer Science and a minor in Mathematics. Currently, I am an Electronic Trader at Morgan Stanley.\n\nI have dreams to stratify the problems of the world and solve them through the power of Statistics, Data Science, Artificial Intelligence, and Kindness :). My goal is to find creative and innovative solutions to ongoing problems so I can help as many people as possible.\n\nOutside of my passion for the markets, I enjoy Mentorship, Cars, Eating, Cooking, and Powerlifting. Originally born and raised in Raleigh, North Carolina - currently in NYC.",
+    "bio": "I am a forward-thinking, hardworking, outgoing person, always looking to help out anyone in any way. I am a graduate of New York University Tandon School of Engineering with a B.S. in Computer Science and a minor in Mathematics. Currently, I am an Electronic Trader at Morgan Stanley.\n\nI have dreams to stratify the problems of the world and solve them through the power of Statistics, Data Science, Artificial Intelligence, and Kindness :). My goal is to find creative and innovative solutions to ongoing problems so I can help as many people as possible.\n\nOutside of my passion for the markets, I enjoy Mentorship, Cars, [Eating](food.html), [Cooking](food.html), and Powerlifting. Originally born and raised in Raleigh, North Carolina - currently in NYC.",
     "location": "New York, NY",
     "email": "me@korivernon.com",
     "resume": "documents/Kori_Vernon_CV.pdf",
@@ -1560,8 +1560,7 @@
         "SQL",
         "C++",
         "Java",
-        "kdb+/q",
-        "JavaScript"
+        "kdb+/q"
       ],
       "hidden": false
     },
@@ -1570,7 +1569,7 @@
       "items": [
         "Postgres",
         "Flask / FastAPI",
-        "Broker & exchange APIs",
+        "Broker APIs",
         "LLM agents",
         "Linux / launchd"
       ],
@@ -1649,6 +1648,10 @@
     {
       "label": "Ahïa Solutions",
       "url": "https://ahiasolutions.com"
+    },
+    {
+      "label": "Food",
+      "url": "food.html"
     },
     {
       "label": "Resources",
