@@ -501,6 +501,85 @@
     };
   }
 
+  /* ---------------- PIN ----------------
+     admin/pin.json holds a salted PBKDF2 hash made by tools/set_admin_pin.py from the gitignored .env.
+     The check runs in the browser, so it's a lock on this console; the GitHub token is still what authorizes writes. */
+  const PIN_OK_KEY = 'ksv:pin-ok';
+  const PIN_FAIL_KEY = 'ksv:pin-fails';
+  let pinCfg = null;
+  async function loadPinCfg() {
+    try {
+      const r = await fetch('pin.json?t=' + Date.now(), { cache: 'no-store' });
+      pinCfg = r.ok ? await r.json() : null;
+    } catch (e) { pinCfg = null; }
+    return pinCfg;
+  }
+  const hex = bytes => Array.from(new Uint8Array(bytes), b => b.toString(16).padStart(2, '0')).join('');
+  const unhex = h => new Uint8Array((h.match(/../g) || []).map(x => parseInt(x, 16)));
+  async function pinMatches(pin) {
+    const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: unhex(pinCfg.salt), iterations: pinCfg.iterations }, key, 256);
+    return hex(bits) === pinCfg.hash;
+  }
+  function lockedFor() {
+    let f = {}; try { f = JSON.parse((ss() && ss().getItem(PIN_FAIL_KEY)) || '{}'); } catch (e) { f = {}; }
+    return Math.max(0, (f.until || 0) - Date.now());
+  }
+  function noteFailure() {
+    let f = {}; try { f = JSON.parse((ss() && ss().getItem(PIN_FAIL_KEY)) || '{}'); } catch (e) { f = {}; }
+    f.n = (f.n || 0) + 1;
+    if (f.n >= 5) { f.until = Date.now() + 30000 * Math.pow(2, f.n - 5); }
+    put(ss(), PIN_FAIL_KEY, JSON.stringify(f));
+  }
+  // Checks a PIN typed into `input`; shows errors in `out`. Resolves true when it matches.
+  async function checkPin(input, out) {
+    const wait = lockedFor();
+    if (wait) { out.textContent = 'Too many tries. Wait ' + Math.ceil(wait / 1000) + 's.'; return false; }
+    out.textContent = 'Checking…';
+    const ok = await pinMatches(input.value.trim());
+    if (ok) { put(ss(), PIN_FAIL_KEY, null); out.textContent = ''; return true; }
+    noteFailure(); input.value = ''; input.focus();
+    out.textContent = lockedFor() ? 'Wrong PIN. Locked for ' + Math.ceil(lockedFor() / 1000) + 's.' : 'Wrong PIN.';
+    return false;
+  }
+  function pinScreen(next) {
+    $('#root').innerHTML = '<div class="gate"><form class="gate-box" id="pinform" autocomplete="off">' +
+      '<h1>$KSV console</h1><p>Enter your PIN to continue.</p>' +
+      '<label class="field"><span>PIN</span><input id="pin" type="password" inputmode="numeric" autocomplete="off" required autofocus></label>' +
+      '<p class="mono" id="pinmsg" role="alert" style="color:var(--down);min-height:1.4em;margin:0 0 10px"></p>' +
+      '<button class="btn primary" type="submit" style="width:100%;justify-content:center">Unlock</button></form></div>';
+    $('#pin').focus();
+    $('#pinform').onsubmit = async e => {
+      e.preventDefault();
+      if (await checkPin($('#pin'), $('#pinmsg'))) { put(ss(), PIN_OK_KEY, pinCfg.hash); next(); }
+    };
+  }
+  // Publish confirmation: PIN plus commit message in one dialog. Resolves the message, or null if cancelled.
+  function confirmPublish() {
+    return new Promise(resolve => {
+      const m = $('#modal');
+      m.innerHTML = '<form method="dialog" id="pubform" autocomplete="off">' +
+        '<div class="modal-head"><h2>Publish changes</h2><button class="ib" value="cancel" title="Close">✕</button></div>' +
+        '<div class="modal-body">' +
+          (pinCfg ? '<label class="field"><span>PIN</span><input id="pubpin" type="password" inputmode="numeric" autocomplete="off" required></label>' : '') +
+          '<label class="field"><span>What changed (commit message)</span><input id="pubmsg" type="text" value="Update site content"></label>' +
+          '<p class="mono" id="pubout" role="alert" style="color:var(--down);min-height:1.4em;margin:0"></p>' +
+        '</div>' +
+        '<div class="modal-foot"><button class="btn sm" value="cancel">Cancel</button><button class="btn sm primary" type="submit" value="go">Publish</button></div></form>';
+      let done = false;
+      m.onclose = () => { if (!done) resolve(null); };
+      $('#pubform').onsubmit = async e => {
+        if (e.submitter && e.submitter.value !== 'go') return;
+        e.preventDefault();
+        if (pinCfg && !(await checkPin($('#pubpin'), $('#pubout')))) return;
+        done = true; const msg = $('#pubmsg').value.trim() || 'Update site content';
+        m.close(); resolve(msg);
+      };
+      m.showModal();
+      (pinCfg ? $('#pubpin') : $('#pubmsg')).focus();
+    });
+  }
+
   /* ---------------- publish ---------------- */
   async function publish() {
     if (S.mode !== 'github') {
@@ -510,7 +589,7 @@
       toast('Downloaded site.json. Replace data/site.json in the repo with it.', 'ok');
       return;
     }
-    const msg = prompt('Commit message', 'Update site content');
+    const msg = await confirmPublish();
     if (msg === null) return;
     const btn = $('#publish'); btn.disabled = true; btn.textContent = 'Publishing…';
     const body = serialize(S.data);
@@ -609,10 +688,17 @@
     $('#local').onclick = () => start('local');
   }
 
-  (function boot() {
+  function enter() {
     const tok = K.getItem(K.TOKEN_KEY);
     let cfg = {}; try { cfg = JSON.parse((ls() && ls().getItem(CFG_KEY)) || '{}'); } catch (e) { cfg = {}; }
     if (tok) { S.token = tok; S.repo = cfg.repo || DEFAULT_REPO; S.branch = cfg.branch || DEFAULT_BRANCH; start('github'); }
     else gate();
+  }
+
+  (async function boot() {
+    await loadPinCfg();
+    let unlocked = null; try { unlocked = ss() && ss().getItem(PIN_OK_KEY); } catch (e) { unlocked = null; }
+    if (pinCfg && unlocked !== pinCfg.hash) pinScreen(enter);
+    else enter();
   })();
 })();
