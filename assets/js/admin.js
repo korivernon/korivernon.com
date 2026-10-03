@@ -117,6 +117,7 @@
     ],
     experience: [
       { row: [{ k: 'title', label: 'Title', req: true }, { k: 'org', label: 'Company / org', req: true }] },
+      { k: 'kind', label: 'Subsection', type: 'select', opts: [['professional', 'Professional Experience'], ['entrepreneurial', 'Entrepreneurial Ventures']] },
       { row: [{ k: 'team', label: 'Team / desk' }, { k: 'orgUrl', label: 'Company URL' }] },
       { row: [{ k: 'start', label: 'Start', type: 'month' }, { k: 'end', label: 'End', type: 'month', hint: 'blank = present' }] },
       { k: 'bullets', label: 'Bullets', type: 'lines', rows: 6, hint: 'one per line' },
@@ -145,6 +146,7 @@
       { k: 'profile.links', label: 'Links', type: 'links', hint: 'Label a link GitHub or LinkedIn and it shows as an icon under your photo. Any other label (e.g. Ahïa Solutions) goes in the top navigation, before Resumé. The email icon comes from “Public email” above.' },
     ],
     extras: [
+      { row: [{ k: 'experienceGroups.professional', label: 'Experience subsection 1 title' }, { k: 'experienceGroups.entrepreneurial', label: 'Experience subsection 2 title' }] },
       { k: 'categories', label: 'Project categories (filter chips, in order)', type: 'list' },
       { k: 'interests', label: 'Interests', type: 'list' },
       { k: 'educationImage', label: 'Picture above Education', type: 'file', dir: 'images', accept: 'image/*', hint: 'leave blank for no picture' },
@@ -177,8 +179,8 @@
     },
     experience: {
       label: 'Experience', sortKey: 'experienceSort', sorter: (l, m) => K.sortByDates(l, m),
-      sym: x => (x.org || '').split(/\s+/).map(w => w[0]).join('').slice(0, 4).toUpperCase(), title: x => x.title + ' · ' + x.org, sub: x => K.fmtRange(x.start, x.end) + (x.team ? ' · ' + x.team : ''),
-      blank: () => ({ id: '', org: '', orgUrl: '', title: '', team: '', start: new Date().toISOString().slice(0, 7), end: null, hidden: false, bullets: [] }),
+      sym: x => (x.org || '').split(/\s+/).map(w => w[0]).join('').slice(0, 4).toUpperCase(), title: x => x.title + ' · ' + x.org, sub: x => (x.kind === 'entrepreneurial' ? 'Entrepreneurial · ' : '') + K.fmtRange(x.start, x.end) + (x.team ? ' · ' + x.team : ''),
+      blank: () => ({ id: '', kind: 'professional', org: '', orgUrl: '', title: '', team: '', start: new Date().toISOString().slice(0, 7), end: null, hidden: false, bullets: [] }),
       idFrom: x => slug(x.org + ' ' + x.title),
     },
     education: {

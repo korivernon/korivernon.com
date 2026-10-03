@@ -1384,7 +1384,8 @@
         "Cover retail aggregators, market makers, exchanges and institutional broker-dealers in US equities and options.",
         "Advise clients on algo selection and parameter tuning and run post-trade TCA reviews to diagnose slippage.",
         "Built Python tools that automate client TCA reporting, desk workflows and operational tasks."
-      ]
+      ],
+      "kind": "professional"
     },
     {
       "id": "ms-data-engineer",
@@ -1399,7 +1400,8 @@
         "Built and deployed a seasonal ARIMA model forecasting trade execution volumes, recalculated every 15 minutes and typically within 3–5% of realized volume during core hours.",
         "Developed a Data Quality Rule Suggestion Engine that profiles datasets and proposes validation rules, enabled across the firm's internal equities trading and reporting platform.",
         "Built data pipelines and APIs for trading and reporting apps, applying ML to improve data quality."
-      ]
+      ],
+      "kind": "professional"
     },
     {
       "id": "ms-amm",
@@ -1414,7 +1416,8 @@
         "Production and DevOps support for an AMM business delivering billions of quotes per day across 15 US exchanges, triaging live incidents with traders and developers.",
         "Built real-time monitoring of key business indicators across the AMM platform.",
         "Built a report aggregation tool and dashboard to load, query, export and purge production data."
-      ]
+      ],
+      "kind": "professional"
     },
     {
       "id": "ms-intern",
@@ -1427,7 +1430,8 @@
       "hidden": false,
       "bullets": [
         "Built a report aggregation tool in Python/Flask for the team's trading, mobile and end-user platforms."
-      ]
+      ],
+      "kind": "professional"
     },
     {
       "id": "ahia",
@@ -1441,7 +1445,8 @@
       "bullets": [
         "Software, AI automation and digital marketing for small businesses in the NYC metro area.",
         "Ran a vehicle rental operation on Turo through January 2026."
-      ]
+      ],
+      "kind": "entrepreneurial"
     },
     {
       "id": "nyu-ta-intro",
@@ -1454,7 +1459,8 @@
       "hidden": false,
       "bullets": [
         "Led lab sections, held office hours and wrote Python teaching material for CS-1114."
-      ]
+      ],
+      "kind": "professional"
     },
     {
       "id": "nyu-ta-dsa",
@@ -1467,7 +1473,8 @@
       "hidden": false,
       "bullets": [
         "Developed course material, graded exams and assignments, and held office hours."
-      ]
+      ],
+      "kind": "professional"
     },
     {
       "id": "ome",
@@ -1480,7 +1487,8 @@
       "hidden": false,
       "bullets": [
         "Ran free summer tutoring (Pre-Algebra through Calculus, SAT/ACT) and mentorship programs that connected students with professionals."
-      ]
+      ],
+      "kind": "entrepreneurial"
     },
     {
       "id": "miningstore",
@@ -1493,7 +1501,8 @@
       "hidden": false,
       "bullets": [
         "Built 60+ crypto mining rigs and ran inventory at an early-stage startup."
-      ]
+      ],
+      "kind": "professional"
     }
   ],
   "skills": [
@@ -1607,5 +1616,9 @@
       "url": "cs1114.html"
     }
   ],
-  "educationImage": "images/education.jpg"
+  "educationImage": "images/education.jpg",
+  "experienceGroups": {
+    "professional": "Professional Experience",
+    "entrepreneurial": "Entrepreneurial Ventures"
+  }
 }

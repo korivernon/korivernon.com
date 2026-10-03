@@ -139,6 +139,8 @@ section.block { padding: 56px 0 0; position: relative; }
 .btn:hover { border-color: var(--accent); }
 
 /* experience */
+.subsec { margin: 8px 0 14px; font-size: 13px; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: .08em; text-align: center; }
+.job + .subsec { margin-top: 34px; }
 .job { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
 .job h3, .edu h3 { margin: 0; font-size: 18px; line-height: 1.35; }
 .job h3 a { color: var(--accent); text-decoration: none; }

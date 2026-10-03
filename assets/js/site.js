@@ -37,8 +37,8 @@
 
     $('#app').innerHTML =
       hero(p, s.showName === true) +
+      (on('showExperience') && exp.length ? section('experience', 'Work Experience', experienceHtml(exp, d.experienceGroups || {})) : '') +
       (showProjects ? section('projects', 'Projects', projectsHtml(projects)) : '') +
-      (on('showExperience') && exp.length ? section('experience', 'Work Experience', experienceHtml(exp)) : '') +
       (on('showEducation') ? section('education', 'Education', educationHtml(d, on('showVideo')), d.educationImage) : '') +
       (on('showSkills') ? section('skills', 'Skills', skillsHtml(d)) : '') +
       footerHtml(d);
@@ -189,7 +189,14 @@
   }
 
   /* ---------------- experience / education / skills ---------------- */
-  function experienceHtml(exp) {
+  // Jobs are split into subsections by their kind (professional first, then entrepreneurial).
+  function experienceHtml(exp, labels) {
+    const kinds = ['professional', 'entrepreneurial'];
+    const groups = kinds.map(k => [k, exp.filter(e => (e.kind || 'professional') === k)]).filter(g => g[1].length);
+    if (groups.length < 2) return jobs(exp);
+    return groups.map(([k, list]) => '<h3 class="subsec">' + esc(labels[k] || (k === 'professional' ? 'Professional Experience' : 'Entrepreneurial Ventures')) + '</h3>' + jobs(list)).join('');
+  }
+  function jobs(exp) {
     return exp.map(e =>
       '<article class="job" data-edit="experience/' + esc(e.id) + '">' + pen('experience/' + e.id) +
         '<h3>' + esc(e.title) + ' @ ' + (e.orgUrl ? link(e.orgUrl, e.org) : esc(e.org)) + '</h3>' +
