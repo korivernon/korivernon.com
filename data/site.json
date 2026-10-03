@@ -842,7 +842,7 @@
       "end": "2023-01",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [],
       "image": ""
     },
