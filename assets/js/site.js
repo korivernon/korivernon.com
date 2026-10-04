@@ -44,6 +44,7 @@
       (on('showEducation') ? section('education', 'Education', educationHtml(d, on('showVideo')), d.educationImage) : '') +
       (on('showSkills') ? section('skills', 'Skills', skillsHtml(d)) : '') +
       (on('showVolunteering') && vol.length ? section('volunteering', (d.experienceGroups || {}).volunteer || 'Volunteering & Mentorship', jobs(vol), d.volunteeringImage) : '') +
+      ctaHtml(d) +
       footerHtml(d);
 
     if (showProjects) wireProjects();
@@ -232,6 +233,20 @@
       (host < 0 ? licHtml : '') +
       ((d.interests || []).length ? group('Interests', d.interests, 'extras') : '') +
     '</div>';
+  }
+
+  // "Want to chat?" block above the footer.
+  function ctaHtml(d) {
+    const c = d.cta || {};
+    const p = d.profile || {};
+    if (c.hidden || !(c.title || c.text)) return '';
+    return '<section class="cta-block wrap" id="contact" data-edit="extras">' + pen('extras') +
+      (c.title ? '<h2 class="sec-title">' + esc(c.title) + '</h2><div class="heading-line"></div>' : '') +
+      (c.text ? '<p class="cta-text">' + inline(c.text) + '</p>' : '') +
+      '<div class="cta-actions">' +
+        (c.url ? link(c.url, c.button || 'Contact me', 'btn btn-accent') : '') +
+        (p.email ? '<a class="btn" href="mailto:' + esc(p.email) + '">Email ' + esc(p.email) + '</a>' : '') +
+      '</div></section>';
   }
 
   function footerHtml(d) {

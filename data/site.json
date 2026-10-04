@@ -1665,5 +1665,12 @@
     "entrepreneurial": "Entrepreneurial Ventures",
     "volunteer": "Volunteering & Mentorship"
   },
-  "volunteeringImage": "images/mentee.jpg"
+  "volunteeringImage": "images/mentee.jpg",
+  "cta": {
+    "hidden": false,
+    "title": "Want to chat?",
+    "text": "Have any questions about my experience or projects? Reach out to me.",
+    "button": "Contact me",
+    "url": "contact_me.html"
+  }
 }

@@ -174,6 +174,15 @@ section.block { padding: 56px 0 0; position: relative; }
 .pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .pill { font-size: 14px; padding: 5px 12px; border-radius: 999px; background: var(--panel-2); border: 1px solid var(--line); }
 
+/* want-to-chat block */
+.cta-block { position: relative; text-align: center; margin-top: 72px; padding: 40px 24px; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius); }
+.cta-block .sec-title { font-size: 28px; }
+.cta-text { color: var(--muted); font-size: 17px; max-width: 46ch; margin: 0 auto 22px; text-wrap: balance; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.btn-accent { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-accent:hover { color: var(--accent-ink); filter: brightness(1.06); }
+.cta-block + footer { margin-top: 48px; }
+
 /* footer */
 footer { margin-top: 72px; border-top: 1px solid var(--line); padding: 40px 0 48px; text-align: center; color: var(--muted); font-size: 14px; }
 .quote { font-size: 16px; color: var(--text); max-width: 60ch; margin: 0 auto 4px; font-style: italic; }
