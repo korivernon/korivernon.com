@@ -286,7 +286,7 @@
       "end": "2026-09",
       "conviction": 3,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -313,7 +313,7 @@
       "end": "2024-05",
       "conviction": 3,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -362,7 +362,7 @@
       "end": "2023-07",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -388,7 +388,7 @@
       "end": "2023-04",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -415,7 +415,7 @@
       "end": "2023-02",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [],
       "image": "",
       "icon": ""
@@ -462,7 +462,7 @@
       "end": "2020-08",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -487,7 +487,7 @@
       "end": "2020-12",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "Page",
@@ -513,7 +513,7 @@
       "end": "2020-09",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -661,7 +661,7 @@
       "end": "2023-02",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -687,7 +687,7 @@
       "end": "2022-11",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -713,7 +713,7 @@
       "end": "2021-08",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -738,7 +738,7 @@
       "end": "2021-08",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -814,7 +814,7 @@
       "end": "2020-03",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -893,7 +893,7 @@
       "end": "2021-02",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -919,7 +919,7 @@
       "end": "2020-12",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -996,7 +996,7 @@
       "end": "2020-05",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "Demo",
@@ -1022,7 +1022,7 @@
       "end": "2021-09",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1075,7 +1075,7 @@
       "end": "2022-01",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "Page",
@@ -1131,7 +1131,7 @@
       "end": "2020-04",
       "conviction": 2,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1182,7 +1182,7 @@
       "end": "2020-04",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1232,7 +1232,7 @@
       "end": "2020-04",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1258,7 +1258,7 @@
       "end": "2021-03",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1284,7 +1284,7 @@
       "end": "2019-07",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1310,7 +1310,7 @@
       "end": "2019-07",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1336,7 +1336,7 @@
       "end": "2020-04",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
@@ -1361,7 +1361,7 @@
       "end": "2019-03",
       "conviction": 1,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "links": [
         {
           "label": "GitHub",
