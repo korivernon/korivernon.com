@@ -240,7 +240,6 @@
     return '<footer><div class="wrap">' +
       (q.text ? '<p class="quote">“' + esc(q.text) + '”</p><p class="quote-by">— ' + esc(q.by || '') + '</p>' : '') +
       '<div class="foot-links">' +
-        '<a href="classic.html">Classic site</a>' +
         '<a href="https://github.com/korivernon/korivernon.com" target="_blank" rel="noopener">Website source code</a>' +
       '</div>' +
       '<p class="copy">© ' + new Date().getFullYear() + ' ' + esc(p.name || '') + '</p>' +
@@ -370,6 +369,6 @@
     render();
     wireCmd();
   }).catch(err => {
-    $('#app').innerHTML = '<p class="wrap loading">Could not load the site (' + esc(err.message) + '). <a href="classic.html">Open the classic site</a>.</p>';
+    $('#app').innerHTML = '<p class="wrap loading">Could not load the site (' + esc(err.message) + '). Please refresh the page.</p>';
   });
 })();

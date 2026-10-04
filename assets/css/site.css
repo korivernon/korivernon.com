@@ -226,8 +226,8 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); padding: 40px 0 48
 .page-head { text-align: center; margin-bottom: 8px; }
 .page-head .sec-title { font-size: clamp(28px, 5vw, 38px); }
 .lede { color: var(--muted); font-size: 17px; max-width: 62ch; margin: 0 auto 28px; text-align: center; text-wrap: balance; }
-.page h2 { font-size: 22px; letter-spacing: -.01em; margin: 40px 0 6px; text-wrap: balance; }
-.page h2 + .heading-line { margin: 0 0 18px; width: 40px; }
+.page h2 { font-size: 22px; letter-spacing: -.01em; margin: 40px 0 6px; text-wrap: balance; text-align: center; }
+.page h2 + .heading-line { margin: 0 auto 18px; width: 40px; }
 .page h3 { font-size: 17px; margin: 22px 0 6px; }
 .page p, .page li { color: var(--muted); }
 .page a { color: var(--accent); }
