@@ -50,7 +50,7 @@
       "symbol": "POMT",
       "name": "PomTrader",
       "summary": "Personal trading platform: every brokerage account in one place, with systematic strategies, execution algos, hedging and AI research.",
-      "description": "Aggregates E*TRADE, Robinhood, Gemini and other accounts (via SnapTrade and direct APIs) into one Flask + Postgres dashboard. Runs a live systematic SOXL/SOXS strategy on MACD + RSI signals with more strategies in paper, TWAP and fractional-TWAP execution algos, a hedging engine that sizes ETF, option and beta hedges to exposure, an AI portfolio manager built from LLM agents, a congressional-trade copier and a News & Insights research tab with deterministic 5-pillar scoring.",
+      "description": "Aggregates E*TRADE, Robinhood, Gemini and other accounts (via SnapTrade and direct APIs) into one Flask + Postgres dashboard. Runs a live systematic strategy trading leveraged Bull/Bear ETFs on MACD + RSI signals with more strategies in paper, TWAP and fractional-TWAP execution algos, a hedging engine that sizes ETF, option and beta hedges to exposure, an AI portfolio manager built from LLM agents, a congressional-trade copier and a News & Insights research tab with deterministic 5-pillar scoring.",
       "category": "Trading",
       "stack": [
         "Systematic strategies",
