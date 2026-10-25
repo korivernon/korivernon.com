@@ -19,11 +19,14 @@
       '<nav class="nav-links" aria-label="Sections">' +
         SECTIONS.map(s => '<a href="index.html#' + s[0] + '">' + s[1] + '</a>').join('') +
         navExtra.map(l => link(l.url, l.label)).join('') +
-        (p.resume ? link(p.resume, 'Resumé') : '') +
+        (p.resume ? link(p.resume, 'Resumé', ' class="nav-resume"') : '') +
       '</nav>' +
       '<div class="nav-tools">' +
-      ((d.archive || []).length ? '<div class="more-menu"><button class="more-btn" id="more-btn" type="button" aria-expanded="false" aria-controls="more-panel">More ▾</button>' +
-        '<div class="more-panel" id="more-panel" hidden>' + d.archive.map(l => link(l.url, l.label, String(l.url) === here ? ' aria-current="page"' : '')).join('') + '</div></div>' : '') +
+      ((d.archive || []).length || p.resume ? '<div class="more-menu"><button class="more-btn" id="more-btn" type="button" aria-expanded="false" aria-controls="more-panel">More ▾</button>' +
+        '<div class="more-panel" id="more-panel" hidden>' +
+          (p.resume ? link(p.resume, 'Resumé', ' class="more-resume"') : '') +
+          (d.archive || []).map(l => link(l.url, l.label, String(l.url) === here ? ' aria-current="page"' : '')).join('') +
+        '</div></div>' : '') +
       '<button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle light or dark theme">◐</button>' +
       '</div>' +
     '</div></header>';

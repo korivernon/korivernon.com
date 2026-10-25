@@ -23,7 +23,7 @@
     if (s.accent && /^#[0-9a-f]{3,8}$/i.test(s.accent)) document.documentElement.style.setProperty('--accent-custom', s.accent);
     if (p.resume) $('#nav-resume').href = safeUrl(p.resume);
     renderNavLinks(p);
-    renderMoreMenu(d.archive || []);
+    renderMoreMenu(d.archive || [], p.resume);
 
     const projects = vis(d.projects);
     const allExp = K.sortByDates(vis(d.experience), s.experienceSort);
@@ -85,10 +85,11 @@
   }
 
   // Small "More" dropdown for older pages (Resources, Learn Python, CS-1114).
-  function renderMoreMenu(items) {
+  // On phones the top bar scrolls, so the resume is repeated as the first menu item (CSS shows it only there).
+  function renderMoreMenu(items, resume) {
     const menu = $('#more-menu'), btn = $('#more-btn'), panel = $('#more-panel');
-    menu.hidden = !items.length;
-    panel.innerHTML = items.map(l => link(l.url, l.label)).join('');
+    menu.hidden = !items.length && !resume;
+    panel.innerHTML = (resume ? link(resume, 'Resumé', 'more-resume') : '') + items.map(l => link(l.url, l.label)).join('');
     if (menu.dataset.wired) return;
     menu.dataset.wired = '1';
     const set = open => { panel.hidden = !open; btn.setAttribute('aria-expanded', open); };
