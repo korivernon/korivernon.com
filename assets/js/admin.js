@@ -163,6 +163,7 @@
       { k: 'beyond.hidden', label: 'Hide the “Beyond” section', type: 'check' },
       { row: [{ k: 'quote.text', label: 'Footer quote', type: 'textarea', rows: 2 }, { k: 'quote.by', label: 'Quote by' }] },
       { k: 'archive', label: 'Hidden “More” menu links', type: 'links', hint: 'Shown only when someone opens the More menu in the top navigation.' },
+      { k: 'moreArchive', label: '“Archive” links (inside the More menu)', type: 'links', hint: 'Older pages, tucked under Archive ▸ at the bottom of the More menu.' },
     ],
     settings: [
       { k: 'settings.showName', label: 'Show my name and headline at the top', type: 'check' },
@@ -564,7 +565,7 @@
   function normalize() {
     const d = S.data;
     d.settings = d.settings || {};
-    ['projects', 'experience', 'education', 'skills', 'archive', 'categories', 'interests'].forEach(k => { d[k] = d[k] || []; });
+    ['projects', 'experience', 'education', 'skills', 'archive', 'moreArchive', 'categories', 'interests'].forEach(k => { d[k] = d[k] || []; });
     d.licenses = (d.licenses || []).map(l => typeof l === 'string' ? { id: slug(l), code: l, name: '', year: '', hidden: false } : l);
     d.beyond = d.beyond || {}; d.quote = d.quote || {};
     ['projects', 'experience', 'education', 'licenses'].forEach(k => d[k].forEach(x => { if (!x.id) x.id = uniqueId(d[k], COLLECTIONS[k].idFrom(x)); }));

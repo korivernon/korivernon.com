@@ -273,3 +273,13 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); padding: 40px 0 48
   .more-panel a.more-resume { display: block; font-weight: 600; border-bottom: 1px solid var(--line); border-radius: 6px 6px 0 0; margin-bottom: 4px; }
   #nav-resume, .nav-links a.nav-resume { display: none; }
 }
+
+/* Archive: a collapsible group at the bottom of the More menu. */
+.more-archive { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 4px; }
+.more-archive summary { list-style: none; cursor: pointer; padding: 8px 10px; border-radius: 6px; font-size: 14px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+.more-archive summary::-webkit-details-marker { display: none; }
+.more-archive summary::after { content: "▸"; font-size: 11px; transition: transform .15s; }
+.more-archive[open] summary::after { transform: rotate(90deg); }
+.more-archive summary:hover { background: var(--panel-2); color: var(--text); }
+.more-archive a { display: block; padding-left: 20px; }
+.more-archive:not([open]) a { display: none; }

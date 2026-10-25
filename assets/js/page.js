@@ -22,10 +22,12 @@
         (p.resume ? link(p.resume, 'Resumé', ' class="nav-resume"') : '') +
       '</nav>' +
       '<div class="nav-tools">' +
-      ((d.archive || []).length || p.resume ? '<div class="more-menu"><button class="more-btn" id="more-btn" type="button" aria-expanded="false" aria-controls="more-panel">More ▾</button>' +
+      ((d.archive || []).length || p.resume || (d.moreArchive || []).length ? '<div class="more-menu"><button class="more-btn" id="more-btn" type="button" aria-expanded="false" aria-controls="more-panel">More ▾</button>' +
         '<div class="more-panel" id="more-panel" hidden>' +
           (p.resume ? link(p.resume, 'Resumé', ' class="more-resume"') : '') +
           (d.archive || []).map(l => link(l.url, l.label, String(l.url) === here ? ' aria-current="page"' : '')).join('') +
+          ((d.moreArchive || []).length ? '<details class="more-archive"' + (d.moreArchive.some(l => String(l.url) === here) ? ' open' : '') + '><summary>Archive</summary>' +
+            d.moreArchive.map(l => link(l.url, l.label, String(l.url) === here ? ' aria-current="page"' : '')).join('') + '</details>' : '') +
         '</div></div>' : '') +
       '<button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle light or dark theme">◐</button>' +
       '</div>' +

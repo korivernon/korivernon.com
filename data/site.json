@@ -1643,18 +1643,6 @@
       "url": "food.html"
     },
     {
-      "label": "Resources",
-      "url": "books.html"
-    },
-    {
-      "label": "Learn Python",
-      "url": "learn_python.html"
-    },
-    {
-      "label": "CS-1114",
-      "url": "cs1114.html"
-    },
-    {
       "label": "Contact",
       "url": "contact_me.html"
     }
@@ -1672,5 +1660,19 @@
     "text": "Have any questions about my experience or projects? Reach out to me.",
     "button": "Contact me",
     "url": "contact_me.html"
-  }
+  },
+  "moreArchive": [
+    {
+      "label": "Resources",
+      "url": "books.html"
+    },
+    {
+      "label": "Learn Python",
+      "url": "learn_python.html"
+    },
+    {
+      "label": "CS-1114",
+      "url": "cs1114.html"
+    }
+  ]
 }
