@@ -125,6 +125,7 @@ section.block { padding: 56px 0 0; position: relative; }
 .status.building { color: var(--amber); background: color-mix(in srgb, var(--amber) 13%, transparent); }
 .status.shipped { color: var(--blue); background: color-mix(in srgb, var(--blue) 13%, transparent); }
 .status.archived { color: var(--faint); background: var(--panel-2); }
+.status.sunset { color: var(--faint); background: var(--panel-2); }
 
 /* project list */
 .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 14px; }

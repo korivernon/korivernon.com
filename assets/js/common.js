@@ -5,7 +5,7 @@
   const DRAFT_KEY = 'ksv:draft';
   const TOKEN_KEY = 'ksv:gh-token';
   const STATUS_RANK = { live: 0, building: 1, shipped: 2, archived: 3 };
-  const STATUSES = ['live', 'building', 'shipped', 'archived'];
+  const STATUSES = ['live', 'building', 'shipped', 'sunset', 'archived'];
 
   function store(kind) {
     try { return kind === 'session' ? global.sessionStorage : global.localStorage; } catch (e) { return null; }

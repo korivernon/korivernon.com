@@ -75,8 +75,8 @@
       "id": "prediction-mm",
       "symbol": "PMM",
       "name": "Sports Event Market Maker",
-      "summary": "Automated two-sided quoting on Kalshi and Polymarket, priced off a proprietary model.",
-      "description": "Quotes every sports market on both venues from a fair-value model. Per-event exposure limits, inventory skew to manage risk, and deliberate accumulation into games where the model is most confident. Has a news engine that matches headlines to quoted markets, a kill switch with text alerts, and a mobile dashboard where API keys are encrypted at rest and hot-swapped into the live adapters.",
+      "summary": "Automated two-sided quoting on Kalshi and Polymarket, priced off a proprietary model. Sunset in Nov 2026.",
+      "description": "Quoted every sports market on both venues from a fair-value model, with per-event exposure limits, inventory skew to manage risk, and deliberate accumulation into games where the model was most confident. Included a news engine that matched headlines to quoted markets, a kill switch with text alerts, and a mobile dashboard with API keys encrypted at rest and hot-swapped into the live adapters. Sunset in November 2026 after Polymarket scaled back the maker rebates and liquidity rewards it pays retail market makers, which had been a large share of the strategy's return.",
       "category": "Trading",
       "stack": [
         "Python",
@@ -85,9 +85,9 @@
         "Polymarket CLOB",
         "SQLite/Postgres"
       ],
-      "status": "live",
+      "status": "sunset",
       "start": "2026-08",
-      "end": null,
+      "end": "2026-11",
       "conviction": 5,
       "featured": true,
       "hidden": false,
