@@ -2,12 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kori Vernon's Resumé</title>
+    <meta property="og:title" content="Kori Vernon's Resumé">
     <meta property="og:image" content="https://korivernon.com/images/korivernon.png">
-    <meta http-equiv="refresh" content="0; url=documents/Kori_Vernon_CV.pdf">
+    <meta name="robots" content="noindex">
+    <!-- No-JS fallback; with JS the click is logged first, then the PDF opens. -->
+    <meta http-equiv="refresh" content="2; url=documents/Kori_Vernon_CV.pdf">
     <link rel="canonical" href="https://korivernon.com/documents/Kori_Vernon_CV.pdf">
+    <style>body{font:16px system-ui,sans-serif;margin:40px 16px;text-align:center;color:#444}</style>
   </head>
   <body>
-    <p><a href="documents/Kori_Vernon_CV.pdf">Open Kori Vernon's resumé (PDF)</a></p>
+    <p>Opening resumé… <a href="documents/Kori_Vernon_CV.pdf">Open Kori Vernon's resumé (PDF)</a></p>
+    <script src="assets/js/common.js"></script>
+    <script>
+      (function () {
+        // Shareable tracked link: korivernon.com/resume?src=linkedin (src, from or s all work).
+        var q = new URLSearchParams(location.search);
+        var src = (q.get('src') || q.get('from') || q.get('s') || '').trim().slice(0, 80);
+        try {
+          KSV.trackResume(src ? 'Shared link' : 'Direct link', {
+            source: src ? 'Link · ' + src : 'Link · korivernon.com/resume (no tag)'
+          });
+        } catch (e) {}
+        setTimeout(function () { location.replace('documents/Kori_Vernon_CV.pdf'); }, 150);
+      })();
+    </script>
   </body>
 </html>

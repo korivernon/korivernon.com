@@ -126,10 +126,73 @@
     return { data: await res.json(), draft: false };
   }
 
+
+  // ---- Resume click log -------------------------------------------------------------------
+  // Every click on a resume link is reported to the owner's click log (resume-clicks server,
+  // read back on the admin page). sendBeacon with a text body: no preflight, never delays the click.
+  const CLICKS_URL = 'https://resume-clicks.ahiasolutions.com';
+  const RESUME_RE = /(^|\/)(documents\/[^\/]*(cv|resume)[^\/]*\.pdf|resume(\.html)?)$/i;
+
+  function pageLabel() {
+    const path = global.location.pathname.replace(/\/index\.html$/, '/');
+    if (path === '/' || path === '') return 'Home';
+    const h = global.document.querySelector('main h1, .page h1, h1');
+    const name = (h && h.textContent.trim()) || path.split('/').pop().replace(/\.html$/, '');
+    return name.slice(0, 60);
+  }
+
+  function spotOf(a) {
+    if (a.closest('.more-panel')) return a.classList.contains('more-resume') ? 'More menu (phone)' : 'More menu';
+    if (a.closest('.nav-links, .nav, nav, header')) return 'Top nav';
+    if (a.closest('footer')) return 'Footer';
+    if (a.closest('#cmd, .cmd')) return 'Command palette';
+    const sec = a.closest('section[id], [id].section');
+    if (sec) {
+      const h = sec.querySelector('h2, h3');
+      return ((h && h.textContent.trim()) || sec.id).slice(0, 40) + ' text';
+    }
+    return 'Page text';
+  }
+
+  function trackResume(spot, extra) {
+    try {
+      const body = Object.assign({
+        source: pageLabel() + ' · ' + spot,
+        page: global.location.pathname + global.location.search,
+        spot: spot,
+        referrer: global.document.referrer || '',
+        me: !!getItem(TOKEN_KEY),
+      }, extra || {});
+      const json = JSON.stringify(body);
+      const nav = global.navigator;
+      if (!(nav.sendBeacon && nav.sendBeacon(CLICKS_URL + '/c', new Blob([json], { type: 'text/plain' })))) {
+        fetch(CLICKS_URL + '/c', { method: 'POST', body: json, keepalive: true, mode: 'no-cors', headers: { 'Content-Type': 'text/plain' } }).catch(() => {});
+      }
+    } catch (e) { /* logging must never break the link */ }
+  }
+
+  function isResumeHref(href) {
+    try {
+      const u = new URL(href, global.location.href);
+      return /(^|\.)korivernon\.com$|^localhost$|^127\.0\.0\.1$/.test(u.hostname) && RESUME_RE.test(u.pathname);
+    } catch (e) { return false; }
+  }
+
+  if (global.document && !/\/admin\//.test(global.location.pathname)) {
+    // auxclick catches middle-click / open-in-new-tab; contextmenu is skipped on purpose (no way to know they opened it).
+    const onClick = e => {
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (a && isResumeHref(a.href) && (e.type === 'click' || e.button === 1)) trackResume(spotOf(a));
+    };
+    global.document.addEventListener('click', onClick, true);
+    global.document.addEventListener('auxclick', onClick, true);
+  }
+
   global.KSV = {
     DRAFT_KEY, TOKEN_KEY, STATUSES, STATUS_RANK,
     esc, safeUrl, isExternal, inline, md, ym, nowYm, fmtYm, fmtRange, duration,
     sortProjects, sortByDates, loadSite, readDraft, getItem,
     isAdmin: () => !!getItem(TOKEN_KEY),
+    trackResume, CLICKS_URL,
   };
 })(window);

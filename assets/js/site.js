@@ -321,7 +321,7 @@
       { k: 'projects', t: 'jump to projects', run: go('projects') },
       { k: 'exp', t: 'jump to work experience', run: go('experience') },
       { k: 'skills', t: 'jump to skills', run: go('skills') },
-      { k: 'resume', t: 'open resumé (PDF)', run: open(p.resume || 'documents/Kori_Vernon_CV.pdf') },
+      { k: 'resume', t: 'open resumé (PDF)', run: () => { K.trackResume('Command palette'); open(p.resume || 'documents/Kori_Vernon_CV.pdf')(); } },
       { k: 'email', t: p.email || '', run: open('mailto:' + p.email) },
       { k: 'theme', t: 'toggle light / dark', run: () => { toggleTheme(); closeCmd(); } },
       { k: 'buy', t: 'buy $KSV', run: () => say('ORDER FILLED  BUY 1 KSV @ MKT\ngreat trade. now send an email: ' + p.email) },

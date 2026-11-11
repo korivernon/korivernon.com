@@ -206,7 +206,7 @@
   };
 
   const NAV = [
-    ['profile', 'Profile'], ['projects', 'Projects'], ['experience', 'Experience & Volunteering'], ['licenses', 'Licenses'],
+    ['profile', 'Profile'], ['clicks', 'Resume clicks'], ['projects', 'Projects'], ['experience', 'Experience & Volunteering'], ['licenses', 'Licenses'],
     ['education', 'Education'], ['skills', 'Skills'], ['extras', 'Extras'], ['settings', 'Settings'], ['raw', 'Raw JSON'],
   ];
 
@@ -359,6 +359,7 @@
     if (COLLECTIONS[S.view]) return renderList(v, S.view);
     if (S.view === 'skills') return renderSkills(v);
     if (S.view === 'raw') return renderRaw(v);
+    if (S.view === 'clicks') return renderClicks(v);
     const hints = {
       profile: 'The top of the page: typing text, photo, buttons, resume and your About Me.',
       extras: 'Section pictures, categories, interests, the “Beyond” section, the footer quote and the hidden More menu.',
@@ -490,6 +491,63 @@
       else return;
       changed(); renderSkills(v);
     };
+  }
+
+
+  /* ---------------- resume clicks ---------------- */
+  // Read-only log of resume-link clicks, from the resume-clicks server. Same GitHub token, checked there.
+  const CLK = { days: 30, hideMe: true, rows: null, err: '' };
+  function renderClicks(v) {
+    const base = 'https://korivernon.com/resume?src=';
+    v.innerHTML = '<p class="hint">Every click on a resume link on the site, and every open of a tracked link like <code>korivernon.com/resume?src=linkedin</code>. Direct links to the PDF file itself can’t be counted.</p>' +
+      '<div class="formcard"><label class="field"><span>Make a tracked link (where will you put it?)</span>' +
+        '<input id="clk-tag" type="text" placeholder="e.g. linkedin, citadel-application, email-signature" autocomplete="off"></label>' +
+        '<div class="clk-link"><code id="clk-url">' + esc(base) + '…</code><button class="btn sm" type="button" id="clk-copy" disabled>Copy</button></div></div>' +
+      '<div class="listbar"><select id="clk-days">' + [[1, 'Today'], [7, '7 days'], [30, '30 days'], [90, '90 days'], [365, '1 year'], [3650, 'All time']].map(o => '<option value="' + o[0] + '"' + (o[0] === CLK.days ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select>' +
+        '<label class="check"><input type="checkbox" id="clk-me"' + (CLK.hideMe ? ' checked' : '') + '>Hide my own clicks</label><span class="sp"></span>' +
+        '<button class="btn sm" type="button" id="clk-refresh">Refresh</button></div><div id="clk-body"><p class="hint">Loading…</p></div>';
+    const tag = $('#clk-tag'), url = $('#clk-url'), copy = $('#clk-copy');
+    tag.oninput = () => {
+      const t = tag.value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+      url.textContent = base + (t || '…'); copy.disabled = !t;
+    };
+    copy.onclick = () => navigator.clipboard.writeText(url.textContent).then(() => toast('Link copied', 'ok'), () => toast('Copy failed; select the link instead', 'err'));
+    $('#clk-days').onchange = e => { CLK.days = +e.target.value; loadClicks(); };
+    $('#clk-me').onchange = e => { CLK.hideMe = e.target.checked; drawClicks(); };
+    $('#clk-refresh').onclick = loadClicks;
+    if (S.mode !== 'github') { $('#clk-body').innerHTML = '<p class="hint">Connect GitHub (sign in with your token) to see the click log.</p>'; return; }
+    loadClicks();
+  }
+  async function loadClicks() {
+    const body = $('#clk-body'); if (!body) return;
+    body.innerHTML = '<p class="hint">Loading…</p>';
+    try {
+      const r = await fetch((K.CLICKS_URL || 'https://resume-clicks.ahiasolutions.com') + '/api/clicks?days=' + CLK.days, { headers: { Authorization: 'Bearer ' + S.token }, cache: 'no-store' });
+      if (r.status === 401) throw new Error('the log server didn’t accept this token');
+      if (!r.ok) throw new Error('log server answered ' + r.status);
+      CLK.rows = (await r.json()).clicks || []; CLK.err = '';
+    } catch (err) { CLK.rows = null; CLK.err = err.message === 'Failed to fetch' ? 'can’t reach the log server (is the Mac awake?)' : err.message; }
+    drawClicks();
+  }
+  function drawClicks() {
+    const body = $('#clk-body'); if (!body) return;
+    if (CLK.err) { body.innerHTML = '<p class="hint">Couldn’t load clicks: ' + esc(CLK.err) + '</p>'; return; }
+    const rows = (CLK.rows || []).filter(r => !(CLK.hideMe && r.me));
+    if (!rows.length) { body.innerHTML = '<p class="hint">No resume clicks in this period yet.</p>'; return; }
+    const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } };
+    const count = keyFn => { const m = {}; rows.forEach(r => { const k = keyFn(r) || '—'; m[k] = (m[k] || 0) + 1; }); return Object.entries(m).sort((a, b) => b[1] - a[1]); };
+    const people = new Set(rows.map(r => r.visitor)).size;
+    let names = null; try { names = new Intl.DisplayNames(undefined, { type: 'region' }); } catch (e) { /* old browser */ }
+    const place = r => [r.city, r.country && names ? (names.of(r.country) || r.country) : r.country].filter(Boolean).join(', ');
+    const table = (title, list) => '<div class="clk-card"><h3>' + esc(title) + '</h3>' + list.slice(0, 12).map(e => '<div class="clk-row"><span>' + esc(e[0]) + '</span><b>' + e[1] + '</b></div>').join('') + '</div>';
+    const when = ts => { const d = new Date(ts); return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) + ' ' + d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }); };
+    body.innerHTML =
+      '<div class="clk-stats"><div><b>' + rows.length + '</b><small>clicks</small></div><div><b>' + people + '</b><small>people</small></div></div>' +
+      '<div class="clk-grid">' + table('Clicked from', count(r => r.source)) + table('Came from (referring site)', count(r => host(r.referrer) || 'none / typed in')) +
+        table('Device', count(r => r.device)) + table('Location', count(place)) + '</div>' +
+      '<h3 class="clk-h">Every click</h3><div class="list">' + rows.slice(0, 500).map(r =>
+        '<div class="clk-item"><span class="mono">' + esc(when(r.ts)) + '</span><span><b>' + esc(r.source) + '</b>' + (r.me ? ' <span class="mode-pill">YOU</span>' : '') +
+        '<small>' + esc([host(r.referrer) && 'via ' + host(r.referrer), r.device, place(r)].filter(Boolean).join(' · ')) + '</small></span></div>').join('') + '</div>';
   }
 
   /* ---------------- raw ---------------- */
